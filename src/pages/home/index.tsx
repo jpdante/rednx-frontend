@@ -6,8 +6,60 @@ import MyComponent from "../../components/MyComponent";
 class Home extends React.Component {
   render() {
     return (
-      <FadeIn className="page-content">
+      <FadeIn>
         <MyComponent />
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
+        <br />
+        <span>a</span>
       </FadeIn>
     );
   }

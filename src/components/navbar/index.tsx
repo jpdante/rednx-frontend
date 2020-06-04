@@ -18,7 +18,7 @@ class NavBar extends React.Component<WithTranslation> {
     const { t } = this.props;
     return (
       <nav
-        className="navbar navbar-dark navbar-expand-md justify-content-center"
+        className="navbar navbar-dark navbar-expand-md justify-content-center fixed-top"
       >
         <div className="w-100 visible-md text-center">
           <a href="/" className="navbar-brand">

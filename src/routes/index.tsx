@@ -7,7 +7,7 @@ let HomePage = (props: RouteComponentProps) => <Home />;
 
 function Routes() {
   return (
-    <Router>
+    <Router className="page-content">
       <HomePage path="/" />
     </Router>
   );

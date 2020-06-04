@@ -6,7 +6,6 @@ html,
   height: 100%;
   min-height: 100vh;
   min-width: 550px;
-  //min-width: 833px;
 }
 
 .content {
@@ -17,7 +16,49 @@ html,
   display: flex;
   width: 100%;
   height: calc(100% - 56px);
+  margin-top: 56px;
 }
+
+.page-content {
+  padding: 10px 60px 20px 60px;
+  width: calc(100% - 240px);
+  margin-left: 240px;
+  transition: all 0.3s;
+  height: calc(100% + 56px);
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    height: calc(100% - 94px) !important;
+    margin-top: 94px !important;
+  }
+
+  .page-content {
+    height: calc(100% + 94px) !important;
+  }
+
+  .sidebar {
+    height: calc(100% - 94px) !important;
+  }
+}
+
+// Scroll Bar
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px rgba(255, 255, 255, 0.15);
+  border: solid 2px transparent;
+  border-radius: 5px;
+}
+
+// NavBar
 
 .search-bar {
   width: 100%;
@@ -34,15 +75,16 @@ html,
   }
 }
 
+// SideBar
+
 .sidebar {
   background-color: #212224;
   width: 240px;
   min-width: 240px;
   padding-top: 10px;
   padding-bottom: 10px;
-  height: 100%;
+  height: calc(100% - 56px);
   color: #d6d6d6;
-  transition: all 0.3s;
   overflow: auto;
   z-index: 10;
   position: fixed;
