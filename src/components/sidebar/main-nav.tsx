@@ -26,27 +26,18 @@ function MainNav() {
           {t("components.navbar.live")}
         </NavLink>
       </li>
-      {/*
-      {this.state.isAuthenticated && (
-        <li className={`${styles.navTable}`}>
-          <Link
-            className={`${styles.navLink} nav-link`}
-            to="/following"
-            alt="Desativado"
-          >
-            <FontAwesomeIcon icon="heart" className={styles.icon} />{" "}
-            {t("components.navbar.following")}
-          </Link>
-        </li>
-      )}
-      {this.state.isAuthenticated && (
-        <li className={`${styles.navTable}`}>
-          <Link className={`${styles.navLink} nav-link`} to="/history">
-            <FontAwesomeIcon icon="history" className={styles.icon} />{" "}
-            {t("components.navbar.history")}
-          </Link>
-        </li>
-      )}*/}
+      <li className={`${styles.navTable}`}>
+        <NavLink to="/following">
+          <FontAwesomeIcon icon="heart" className={styles.icon} />{" "}
+          {t("components.navbar.following")}
+        </NavLink>
+      </li>
+      <li className={`${styles.navTable}`}>
+        <NavLink to="/history">
+          <FontAwesomeIcon icon="history" className={styles.icon} />{" "}
+          {t("components.navbar.history")}
+        </NavLink>
+      </li>
     </nav>
   );
 }
