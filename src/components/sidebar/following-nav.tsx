@@ -1,9 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import NavLink from "../sidebar/nav-link";
-
 import styles from "./sidebar.module.scss";
+
+import NavLink from "../sidebar/nav-link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function FollowingNav() {
   const { t } = useTranslation();
@@ -73,6 +74,18 @@ function FollowingNav() {
           <div className="float-right">
             <span className="badge badge-primary">7</span>
           </div>
+        </NavLink>
+      </li>
+      <li className={`${styles.navTable}`}>
+        <NavLink to="/following">
+          <FontAwesomeIcon icon="heart" className={styles.icon} />{" "}
+          {t("components.navbar.following")}
+        </NavLink>
+      </li>
+      <li className={`${styles.navTable}`}>
+        <NavLink to="/history">
+          <FontAwesomeIcon icon="history" className={styles.icon} />{" "}
+          {t("components.navbar.history")}
         </NavLink>
       </li>
     </nav>
