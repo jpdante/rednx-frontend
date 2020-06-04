@@ -5,6 +5,7 @@ import { withTranslation, WithTranslation } from "react-i18next";
 import MainNav from "./main-nav";
 
 import styles from "./sidebar.module.scss";
+import FollowingNav from './following-nav';
 
 class SideBar extends React.Component<WithTranslation> {
   state = {
@@ -17,6 +18,8 @@ class SideBar extends React.Component<WithTranslation> {
     const { t } = this.props;
     return <div className="sidebar">
       <MainNav />
+      <hr />
+      <FollowingNav />
     </div>;
   }
 }
