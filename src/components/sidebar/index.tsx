@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "@reach/router";
 import { withTranslation, WithTranslation } from "react-i18next";
 
-import MainNav from "./main-nav";
-
 import styles from "./sidebar.module.scss";
+
+import MainNav from "./main-nav";
 import FollowingNav from './following-nav';
+import CategoryNav from "./category-nav";
 
 class SideBar extends React.Component<WithTranslation> {
   state = {
@@ -20,6 +21,8 @@ class SideBar extends React.Component<WithTranslation> {
       <MainNav />
       <hr />
       <FollowingNav />
+      <hr />
+      <CategoryNav />
     </div>;
   }
 }
