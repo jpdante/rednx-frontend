@@ -16,7 +16,7 @@ html,
   display: flex;
   width: 100%;
   height: calc(100% - 56px);
-  margin-top: 56px;
+  padding-top: 56px;
 }
 
 .page-content {
@@ -24,7 +24,14 @@ html,
   width: calc(100% - 240px);
   margin-left: 240px;
   transition: all 0.3s;
-  height: calc(100% + 56px);
+  height: calc(100% - 56px);
+}
+
+.center-page-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 768px) {

@@ -1,12 +1,33 @@
 import React from "react";
-import FadeIn from "react-fade-in";
 
 import MyComponent from "../../components/MyComponent";
+import Loading from "../../components/loading";
 
-class Home extends React.Component {
+interface IProps {}
+interface IState {
+  loading?: boolean;
+}
+
+class Home extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1000);
+  }
+
   render() {
+    if (this.state.loading) {
+      return <Loading isPageContent={true} />;
+    }
     return (
-      <FadeIn>
+      <div>
         <MyComponent />
         <br />
         <span>a</span>
@@ -59,8 +80,8 @@ class Home extends React.Component {
         <br />
         <span>a</span>
         <br />
-        <span>a</span>
-      </FadeIn>
+        <span>penis</span>
+      </div>
     );
   }
 }
