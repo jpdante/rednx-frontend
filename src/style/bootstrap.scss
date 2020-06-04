@@ -1,0 +1,67 @@
+@import "./colors.scss";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.navbar {
+  background-color: #282a2c;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  z-index: 1000;
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .visible-md {
+    display: none !important;
+  }
+
+  .hidden-md {
+    display: inline-block !important;
+  }
+
+  @media (max-width: 768px) {
+    .visible-md {
+      display: inline-block !important;
+    }
+
+    .navbar-margin-top-md {
+      margin-top: 7px;
+    }
+
+    .hidden-md {
+      display: none !important;
+    }
+  }
+}
+
+.nav-item {
+  position: relative;
+
+  .nav-item-active {
+    width: calc(100% - 16px);
+    height: 8px;
+    margin-top: 8px;
+    border-bottom: 3px solid #b10003;
+    position: absolute;
+    visibility: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .nav-item-active {
+      border-bottom: none;
+    }
+
+    .active {
+      background-color: #212224;
+      border-radius: 5px;
+    }
+  }
+
+  .active {
+    transition: all 0.3s;
+    .nav-item-active {
+      visibility: visible;
+    }
+  }
+}

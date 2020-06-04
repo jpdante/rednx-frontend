@@ -1,0 +1,38 @@
+.navVertical {
+  width: 100%;
+
+  .navTable {
+    display: table;
+  }
+
+  .navLink {
+    color: #d6d6d6;
+    font-size: 14px;
+    height: 40px;
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle !important;
+
+    &:hover {
+      background-color: #2e3133;
+    }
+
+    img {
+      margin-right: 10px !important;
+    }
+
+    svg {
+      margin-right: 10px;
+      width: 21px;
+    }
+  }
+
+  .active {
+    background-color: #2e3133 !important;
+  }
+
+  p {
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+}

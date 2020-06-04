@@ -1,0 +1,186 @@
+{
+    "components": {
+      "navbar": {
+        "discover": "Discover",
+        "following": "Following",
+        "history": "History",
+        "home": "Home",
+        "hot": "Hot",
+        "language": "Language",
+        "live": "Live",
+        "login": "Login",
+        "logout": "Logout",
+        "profile": "Profile",
+        "register": "Register",
+        "search": "Search"
+      },
+      "thumbnail": {
+        "view": "{{countText}} view",
+        "view_plural": "{{countText}} views"
+      }
+    },
+    "errors": {
+      "accountBanned": "This account has been banned!",
+      "accountNotActive": "Your email has not been verified, to resend the validation email click here.",
+      "alreadyLoggedIn": "You are already logged in! Please logout first.",
+      "birthDateEmpty": "Date of birth cannot be empty.",
+      "channelLinkAlreadyExists": "A channel with this link already exists.",
+      "channelLinkEmpty": "Channel link cannot be empty.",
+      "channelNameEmpty": "Channel name cannot be empty.",
+      "commentTooBig": "The comment is too long, use a maximum of 500 characters.",
+      "commentTooSmall": "The comment is too short, use at least 10 characters.",
+      "emailAlreadyRegistered": "This email is already registered.",
+      "emailNotRegistered": "This email is not registered.",
+      "failedParsingData": "Failed parsing data.",
+      "failedToConvertImage": "Failed to convert the image!",
+      "failedToRegister": "Failed to register. Contact support and use ID: {{id}}",
+      "fieldsMissing": "There are fields missing.",
+      "incompatibleFormat": "The received format is incompatible.",
+      "incorrectPassword": "The password is incorrect!",
+      "internalServerError": "Internal server error, please try again later. If the problem persists, contact support.",
+      "invalidBirthDate": "Invalid date of birth!",
+      "invalidEmail": "This email is invalid!",
+      "invalidSession": "Invalid session.",
+      "invalidUsername": "This username is invalid!",
+      "loginError": "There was a problem signing in, check your credentials, if the problem persists please contact support.",
+      "maxChannelsHit": "You have reached the maximum channel limit.",
+      "noImageSelected": "No image was selected!",
+      "operationDenied": "Operation denied!",
+      "passwordEmpty": "The password cannot be empty.",
+      "passwordsDontMatch": "Passwords are not the same.",
+      "requestBodyTooBig": "The size is too big!",
+      "unknownApi": "Error, unknown API.",
+      "usernameAlreadyRegistered": "This username is already registered.",
+      "usernameEmpty": "Username cannot be empty.",
+      "usernameInvalid": "Username invalid, only numbers, letters, dashes, underscores and periods are accepted.",
+      "usernameSize": "The username must contain between 3 and 20 characters."
+    },
+    "hcaptcha": {
+      "msg1": "This site is protected by hCaptcha and its",
+      "msg2": "and",
+      "msg3": "apply.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    },
+    "modals": {
+      "accountCreated": "Account created! Check your email to validate your account.",
+      "alreadyHasAccount": "Already have an account?",
+      "birthDate": "Date of Birth",
+      "changeLanguage": "Change Language",
+      "channelLink": "Channel link",
+      "channelLinkMaxLength": "Channel link can only have a maximum of 16 characters",
+      "channelName": "Channel name",
+      "channelNameMaxLength": "Channel name can only have a maximum of 32 characters",
+      "chooseFile": "Choose File...",
+      "close": "Close",
+      "confirmPassword": "Confirm Password",
+      "email": "Email",
+      "forgotPassword": "Forgot your password ?",
+      "password": "Password",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "removePicture": "Remove Picture",
+      "save": "Save",
+      "saved": "Saved!",
+      "saving": "Saving...",
+      "uploadAvatar": "Upload avatar",
+      "username": "Username",
+      "usernameOrEmail": "Username or Email"
+    },
+    "numbers": {
+      "billion": "{{count}} billion",
+      "billionMinify": "{{count}}B",
+      "billion_plural": "{{count}} billion",
+      "million": "{{count}} million",
+      "millionMinify": "{{count}}M",
+      "million_plural": "{{count}} million",
+      "thousand": "{{count}}K",
+      "thousandMinify": "{{count}}K",
+      "thousand_plural": "{{count}} thousand"
+    },
+    "pages": {
+      "discover": {
+        "title": "Discover"
+      },
+      "home": {
+        "followed": "Followed channels",
+        "newVideos": "New videos",
+        "videosai": "Videos we think you'll like"
+      },
+      "live": {
+        "error": "We don't support lives yet, but rest assured, we're working on it :)"
+      },
+      "newChannel": {
+        "createChannel": "Create channel",
+        "newChannel": "New Channel"
+      },
+      "profile": {
+        "changePassword": "Change Password",
+        "confirmNewPassword": "Confirm new password",
+        "email": "Email",
+        "newPassword": "New password",
+        "oldPassword": "Old password",
+        "password": "Password",
+        "profile": "Profile",
+        "publicProfile": "Public Profile",
+        "security": "Security",
+        "settings": "Settings",
+        "updatePassword": "Update password",
+        "updateProfile": "Update profile",
+        "username": "Username"
+      },
+      "recommended": {
+        "title": "Recommended"
+      },
+      "watch": {
+        "commentPlaceHolder": "Type a nice comment here and press the ENTER key to send it",
+        "followers": "{{countText}} followers",
+        "hideDescription": "Hide Description",
+        "needLogin": {
+          "toLogin": "to log in",
+          "toSend": "to post a comment",
+          "youNeed": "You need"
+        },
+        "send": "Send",
+        "showDescription": "Show Description"
+      }
+    },
+    "shared": {
+      "category": "Category",
+      "category_plural": "Categories",
+      "comedy": "Comedy",
+      "dislike": "Dislike",
+      "dislike_plural": "Dislikes",
+      "education": "Education",
+      "follow": "Follow",
+      "following": "Following",
+      "games": "Games",
+      "like": "Like",
+      "like_plural": "Likes",
+      "recommended": "Recommended",
+      "recommended_plural": "Recommended",
+      "report": "Report",
+      "science": "Science",
+      "share": "Share",
+      "sports": "Sports",
+      "unknown": "Unknown",
+      "vlogs": "Vlogs"
+    },
+    "time": {
+      "ago": "{{time}} ago",
+      "day": "{{count}} day",
+      "day_plural": "{{count}} days",
+      "hour": "{{count}} hour",
+      "hour_plural": "{{count}} hours",
+      "minute": "{{count}} minute",
+      "minute_plural": "{{count}} minutes",
+      "month": "{{count}} month",
+      "month_plural": "{{count}} months",
+      "second": "{{count}} second",
+      "second_plural": "{{count}} seconds",
+      "week": "{{count}} week",
+      "week_plural": "{{count}} weeks",
+      "year": "{{count}} year",
+      "year_plural": "{{count}} years"
+    }
+  }
+  
