@@ -1,25 +1,21 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { withTranslation, WithTranslation } from "react-i18next";
+import { withTranslation } from "react-i18next";
+import type { StoreProps } from "../../undux";
+import Store from "../../undux";
 
 import SearchBar from "./search-bar";
 import NavLink from "./nav-link";
 
 import ButtonBar from "./button-bar";
-
-class NavBar extends React.Component<WithTranslation> {
-  state = {
-    isAuthenticated: false,
-  };
-
+import UserBar from "./user-bar";
+class NavBar extends React.Component<StoreProps> {
   logout = async () => {};
 
   render() {
-    const { t } = this.props;
+    const { t, auth } = this.props;
     return (
-      <nav
-        className="navbar navbar-dark navbar-expand-md justify-content-center fixed-top"
-      >
+      <nav className="navbar navbar-dark navbar-expand-md justify-content-center fixed-top">
         <div className="w-100 visible-md text-center">
           <a href="/" className="navbar-brand">
             <span style={{ color: "#B10003" }}> Red</span>NX
@@ -44,11 +40,11 @@ class NavBar extends React.Component<WithTranslation> {
           <ul className="navbar-nav w-100 justify-content-center hidden-md">
             <SearchBar hasNavbarToggler={false} />
           </ul>
-          <ButtonBar />
+          {auth.get("isLogged") ? <UserBar /> : <ButtonBar />}
         </div>
       </nav>
     );
   }
 }
 
-export default withTranslation()(NavBar);
+export default Store.withStores(withTranslation()(NavBar));

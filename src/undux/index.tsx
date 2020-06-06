@@ -1,20 +1,54 @@
-import { Effects, Store, createConnectedStore, withReduxDevtools } from 'undux'
+import {
+  EffectsAs,
+  Store,
+  createConnectedStoreAs,
+  withReduxDevtools,
+} from "undux";
+import { WithTranslation } from "react-i18next";
+import { hasToken } from "../services/auth";
+import { withEffects } from "./effects";
 
-type State = {
-  foo: number
-  bar: string[]
-}
+type AuthState = {
+  isLogged: boolean;
+  token: string | null;
+};
 
-let initialState: State = {
-  foo: 12,
-  bar: []
-}
+type ProfileState = {
+  username: string | null;
+  picture: string | null;
+  email: string | null;
+};
 
-export default createConnectedStore(initialState, withReduxDevtools)
+let initialAuthState: AuthState = {
+  isLogged: hasToken(),
+  token: null
+};
 
-// Ignore this if you're using React Hooks
-export type StoreProps = {
-  store: Store<State>
-}
+let initialProfileState: ProfileState = {
+  username: localStorage.getItem("profile.username"),
+  picture: localStorage.getItem("profile.picture"),
+  email: localStorage.getItem("profile.email"),
+};
 
-export type StoreEffects = Effects<State>
+export default createConnectedStoreAs(
+  {
+    auth: initialAuthState,
+    profile: initialProfileState,
+  },
+  (stores) => {
+    return withEffects({
+      auth: withReduxDevtools(stores.auth),
+      profile: withReduxDevtools(stores.profile),
+    });
+  }
+);
+
+export type StoreProps = WithTranslation & {
+  auth: Store<AuthState>;
+  profile: Store<ProfileState>;
+};
+
+export type StoreEffects = EffectsAs<{
+  auth: AuthState;
+  profile: ProfileState;
+}>;

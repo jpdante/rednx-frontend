@@ -1,11 +1,18 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "@reach/router";
+import Store, { StoreProps } from "../../undux";
 
 import styles from "./navbar.module.scss";
 
 function UserBar() {
   const { t } = useTranslation();
+  let stores = Store.useStores();
+
+  async function logout() {
+    stores.auth.set("token")(null);
+  }
+
   return (
     <ul className="nav navbar-nav ml-auto w-100 justify-content-end">
       <li className="nav-item dropdown">
@@ -18,7 +25,9 @@ function UserBar() {
         >
           <div>
             <img
-              src="http://public.tryhosting.com.br/pp/5d4221c86dc946dca206b9060543c3d5.webp"
+              src={`http://s3.tryhosting.com.br/pp/${stores.profile.get(
+                "picture"
+              )}.webp`}
               width="30"
               height="30"
               className="rounded mx-auto d-inline-block align-top"
@@ -40,7 +49,7 @@ function UserBar() {
           >
             {t("components.navbar.language")}
           </button>
-          <button className="dropdown-item">
+          <button className="dropdown-item" onClick={logout}>
             {t("components.navbar.logout")}
           </button>
         </div>

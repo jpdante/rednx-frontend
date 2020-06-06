@@ -1,9 +1,9 @@
 export const TOKEN_KEY = "rednxt";
-export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
+export const hasToken = () => localStorage.getItem(TOKEN_KEY) !== null;
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
-export const login = (token: string) => {
+export const setToken = (token: string) => {
   localStorage.setItem(TOKEN_KEY, token);
 };
-export const logout = () => {
+export const deleteToken = () => {
   localStorage.removeItem(TOKEN_KEY);
 };

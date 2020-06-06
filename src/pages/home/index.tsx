@@ -1,13 +1,9 @@
 import React from "react";
 
-import MyComponent from "../../components/MyComponent";
 import Loading from "../../components/loading";
 import FeedNewVideos from "../../components/feed/new-videos";
 import { withTranslation, WithTranslation } from "react-i18next";
 import api from "../../api";
-
-interface IProps extends WithTranslation {
-}
 
 type Video = {
   title: string;
@@ -29,7 +25,7 @@ interface IState {
   videos: Video[]; 
 }
 
-class Home extends React.Component<IProps, IState> {
+class Home extends React.Component<WithTranslation, IState> {
   constructor(props: any) {
     super(props);
     this.state = {

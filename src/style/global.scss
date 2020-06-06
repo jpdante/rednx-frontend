@@ -42,10 +42,23 @@ html,
 
   .page-content {
     height: calc(100% + 94px) !important;
+    padding: 10px 10px 20px 10px;
   }
 
   .sidebar {
     height: calc(100% - 94px) !important;
+  }
+}
+
+@media (max-width: 1068px) and (min-width: 768px) {
+  .page-content {
+    padding: 10px 30px 20px 30px;
+  }
+}
+
+@media (max-width: 1668px) and (min-width: 1068px) {
+  .page-content {
+    padding: 10px 40px 20px 40px;
   }
 }
 
