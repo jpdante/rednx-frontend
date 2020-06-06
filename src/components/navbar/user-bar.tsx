@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "@reach/router";
-import Store, { StoreProps } from "../../undux";
+import Store from "../../undux";
 
 import styles from "./navbar.module.scss";
 

@@ -9,6 +9,7 @@ import Routes from "./routes";
 import Loading from "./components/loading";
 import NavBar from "./components/navbar";
 import SideBar from "./components/sidebar";
+import Modals from "./components/modals";
 
 class App extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
         <Suspense fallback={<Loading />}>
           <div className="content">
             <NavBar />
+            <Modals />
             <div className="wrapper">
               <SideBar />
               <Routes />
