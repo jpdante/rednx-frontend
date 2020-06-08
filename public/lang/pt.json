@@ -1,186 +1,186 @@
 {
-    "components": {
-      "navbar": {
-        "discover": "Descobrir",
-        "following": "Seguindo",
-        "history": "Histórico",
-        "home": "Inicio",
-        "hot": "Em Alta",
-        "language": "Idioma",
-        "live": "Ao Vivo",
-        "login": "Entrar",
-        "logout": "Sair",
-        "profile": "Perfil",
-        "register": "Registrar",
-        "search": "Pesquisar"
-      },
-      "thumbnail": {
-        "view": "{{countText}} visualização",
-        "view_plural": "{{countText}} visualizações"
-      }
-    },
-    "errors": {
-      "accountBanned": "Está conta foi banida!",
-      "accountNotActive": "O seu email não foi verificado, para reenviar o email de validação clique aqui.",
-      "alreadyLoggedIn": "Você já está logado! Saia primeiro.",
-      "birthDateEmpty": "A data de nascimento não pode ficar vazia.",
-      "channelLinkAlreadyExists": "Um canal com este link já existe.",
-      "channelLinkEmpty": "O link do canal não pode ficar em branco.",
-      "channelNameEmpty": "O nome do canal não pode ficar em branco.",
-      "commentTooBig": "O comentário é muito grande, use no máximo 500 caracteres.",
-      "commentTooSmall": "O comentário é muito curto, use pelo menos 10 caracteres.",
-      "emailAlreadyRegistered": "Este email já esta registrado.",
-      "emailNotRegistered": "Este email não esta registrado.",
-      "failedParsingData": "Falha ao analisar dados.",
-      "failedToConvertImage": "Ocorreu uma falha ao converter a imagem!",
-      "failedToRegister": "Ocorreu uma falha ao fazer o registro. Contate o suporte e use o ID: {{id}}",
-      "fieldsMissing": "Existem campos faltando.",
-      "incompatibleFormat": "O formato recebido é incompatível.",
-      "incorrectPassword": "A senha está incorreta!",
-      "internalServerError": "Erro interno do servidor, tente novamente mais tarde. Se o problema persistir, contate o suporte.",
-      "invalidBirthDate": "Data de Nascimento inválida!",
-      "invalidEmail": "Este email é invalido!",
-      "invalidSession": "Sessão inválida.",
-      "invalidUsername": "Este nome de usuário é invalido!",
-      "loginError": "Houve um problema ao iniciar a sessão, verifique as suas credenciais, se o problema persistir por favor contate o suporte.",
-      "maxChannelsHit": "Você atingiu o limite maximo de canais.",
-      "noImageSelected": "Nenhuma imagem foi selecionada!",
-      "operationDenied": "Operação negada!",
-      "passwordEmpty": "A senha não pode ficar em branco.",
-      "passwordsDontMatch": "As senhas não são iguais.",
-      "requestBodyTooBig": "O tamanho é muito grande!",
-      "unknownApi": "Erro, API desconhecida.",
-      "usernameAlreadyRegistered": "Este nome de usuário já esta registrado.",
-      "usernameEmpty": "O nome de usuário não pode ficar em branco.",
-      "usernameInvalid": "Nome do usuário inválido, só são aceitos numeros, letras, tracos, sublinhados e pontos.",
-      "usernameSize": "O nome de usuário deve conter entre 3 a 20 caracteres."
-    },
-    "hcaptcha": {
-      "msg1": "Este site é protegido pelo hCaptcha e sua",
-      "msg2": "e",
-      "msg3": "se aplicam.",
-      "privacyPolicy": "Política de Privacidade",
-      "termsOfService": "Termos de Serviço"
-    },
-    "modals": {
-      "accountCreated": "Conta criada! Verifique o seu email para validar a sua conta.",
-      "alreadyHasAccount": "Já possui uma conta ?",
-      "birthDate": "Data de Nascimento",
-      "changeLanguage": "Alterar Idioma",
-      "channelLink": "Link do canal",
-      "channelLinkMaxLength": "O link do canal só pode ter no maximo 16 caracteres",
-      "channelName": "Nome do canal",
-      "channelNameMaxLength": "O nome do canal só pode ter no maximo 32 caracteres",
-      "chooseFile": "Escolher Arquivo...",
-      "close": "Fechar",
-      "confirmPassword": "Confirmar Senha",
-      "email": "Email",
-      "forgotPassword": "Esqueceu a sua senha ?",
-      "password": "Senha",
-      "passwordMinLength": "A senha precisa ter no mínimo 8 caracteres",
-      "removePicture": "Remover Foto",
-      "save": "Salvar",
-      "saved": "Salvo!",
-      "saving": "Salvando...",
-      "uploadAvatar": "Enviar foto de perfil",
-      "username": "Usuário",
-      "usernameOrEmail": "Usuário ou Email"
-    },
-    "numbers": {
-      "billion": "{{count}} bilhão",
-      "billionMinify": "{{count}} bi",
-      "billion_plural": "{{count}} bilhões",
-      "million": "{{count}} milhões",
-      "millionMinify": "{{count}} mi",
-      "million_plural": "{{count}} milhões",
-      "thousand": "{{count}} mil",
-      "thousandMinify": "{{count}} mil",
-      "thousand_plural": "{{count}} mil"
-    },
-    "pages": {
-      "discover": {
-        "title": "Descobrir"
-      },
-      "home": {
-        "followed": "Canais seguidos",
-        "newVideos": "Novos vídeos",
-        "videosai": "Vídeos que achamos que vai gostar"
-      },
-      "live": {
-        "error": "Ainda não suportamos lives, mas fique tranquilo, estamos trabalhando nisso :)"
-      },
-      "newChannel": {
-        "createChannel": "Criar canal",
-        "newChannel": "Novo Canal"
-      },
-      "profile": {
-        "changePassword": "Alterar Senha",
-        "confirmNewPassword": "Confirmar nova senha",
-        "email": "Email",
-        "newPassword": "Nova senha",
-        "oldPassword": "Senha antiga",
-        "password": "Senha",
-        "profile": "Perfil",
-        "publicProfile": "Perfil Publico",
-        "security": "Segurança",
-        "settings": "Configurações",
-        "updatePassword": "Atualizar senha",
-        "updateProfile": "Atualizar perfil",
-        "username": "Nome de usuário"
-      },
-      "recommended": {
-        "title": "Recomendados"
-      },
-      "watch": {
-        "commentPlaceHolder": "Digite aqui um comentário legal e pressione a tecla ENTER para enviar-lo",
-        "followers": "{{countText}} seguidores",
-        "hideDescription": "Ocultar Descrição",
-        "needLogin": {
-          "toLogin": "fazer login",
-          "toSend": "para enviar um comentario",
-          "youNeed": "Você precisa"
-        },
-        "send": "Enviar",
-        "showDescription": "Mostrar Descrição"
-      }
-    },
-    "shared": {
-      "category": "Categoria",
-      "category_plural": "Categorias",
-      "comedy": "Comédia",
-      "dislike": "Descurtir",
-      "dislike_plural": "Descurtidas",
-      "education": "Educação",
-      "follow": "Seguir",
+  "components": {
+    "navbar": {
+      "discover": "Descobrir",
       "following": "Seguindo",
-      "games": "Jogos",
-      "like": "Curtir",
-      "like_plural": "Curtidas",
-      "recommended": "Recomendado",
-      "recommended_plural": "Recomendados",
-      "report": "Reportar",
-      "science": "Ciência",
-      "share": "Compartilhar",
-      "sports": "Esportes",
-      "unknown": "Desconhecida",
-      "vlogs": "Vlogs"
+      "history": "Histórico",
+      "home": "Inicio",
+      "hot": "Em Alta",
+      "language": "Idioma",
+      "live": "Ao Vivo",
+      "login": "Entrar",
+      "logout": "Sair",
+      "profile": "Perfil",
+      "register": "Registrar",
+      "search": "Pesquisar"
     },
-    "time": {
-      "ago": "há {{time}}",
-      "day": "{{count}} dia",
-      "day_plural": "{{count}} dias",
-      "hour": "{{count}} hora",
-      "hour_plural": "{{count}} horas",
-      "minute": "{{count}} minuto",
-      "minute_plural": "{{count}} minutos",
-      "month": "{{count}} mês",
-      "month_plural": "{{count}} meses",
-      "second": "{{count}} segundo",
-      "second_plural": "{{count}} segundos",
-      "week": "{{count}} semana",
-      "week_plural": "{{count}} semanas",
-      "year": "{{count}} ano",
-      "year_plural": "{{count}} anos"
+    "thumbnail": {
+      "view": "{{countText}} visualização",
+      "view_plural": "{{countText}} visualizações"
     }
+  },
+  "errors": {
+    "accountBanned": "Está conta foi banida!",
+    "accountNotActive": "O seu email não foi verificado, para reenviar o email de validação clique aqui.",
+    "alreadyLoggedIn": "Você já está logado! Saia primeiro.",
+    "birthDateEmpty": "A data de nascimento não pode ficar vazia.",
+    "channelLinkAlreadyExists": "Um canal com este link já existe.",
+    "channelLinkEmpty": "O link do canal não pode ficar em branco.",
+    "channelNameEmpty": "O nome do canal não pode ficar em branco.",
+    "commentTooBig": "O comentário é muito grande, use no máximo 500 caracteres.",
+    "commentTooSmall": "O comentário é muito curto, use pelo menos 10 caracteres.",
+    "emailAlreadyRegistered": "Este email já esta registrado.",
+    "emailNotRegistered": "Este email não esta registrado.",
+    "failedParsingData": "Falha ao analisar dados.",
+    "failedToConvertImage": "Ocorreu uma falha ao converter a imagem!",
+    "failedToRegister": "Ocorreu uma falha ao fazer o registro. Contate o suporte e use o ID: {{id}}",
+    "fieldsMissing": "Existem campos faltando.",
+    "incompatibleFormat": "O formato recebido é incompatível.",
+    "incorrectPassword": "A senha está incorreta!",
+    "internalServerError": "Erro interno do servidor, tente novamente mais tarde. Se o problema persistir, contate o suporte.",
+    "invalidBirthDate": "Data de Nascimento inválida!",
+    "invalidEmail": "Este email é invalido!",
+    "invalidSession": "Sessão inválida.",
+    "invalidUsername": "Este nome de usuário é invalido!",
+    "loginError": "Houve um problema ao iniciar a sessão, verifique as suas credenciais, se o problema persistir por favor contate o suporte.",
+    "maxChannelsHit": "Você atingiu o limite maximo de canais.",
+    "noImageSelected": "Nenhuma imagem foi selecionada!",
+    "operationDenied": "Operação negada!",
+    "passwordEmpty": "A senha não pode ficar em branco.",
+    "passwordsDontMatch": "As senhas não são iguais.",
+    "requestBodyTooBig": "O tamanho é muito grande!",
+    "unknownApi": "Erro, API desconhecida.",
+    "usernameAlreadyRegistered": "Este nome de usuário já esta registrado.",
+    "usernameEmpty": "O nome de usuário não pode ficar em branco.",
+    "usernameInvalid": "Nome do usuário inválido, só são aceitos numeros, letras, tracos, sublinhados e pontos.",
+    "usernameSize": "O nome de usuário deve conter entre 3 a 20 caracteres."
+  },
+  "hcaptcha": {
+    "msg1": "Este site é protegido pelo hCaptcha e sua",
+    "msg2": "e",
+    "msg3": "se aplicam.",
+    "privacyPolicy": "Política de Privacidade",
+    "termsOfService": "Termos de Serviço"
+  },
+  "modals": {
+    "accountCreated": "Conta criada! Verifique o seu email para validar a sua conta.",
+    "alreadyHasAccount": "Já possui uma conta ?",
+    "birthDate": "Data de Nascimento",
+    "changeLanguage": "Alterar Idioma",
+    "channelLink": "Link do canal",
+    "channelLinkMaxLength": "O link do canal só pode ter no maximo 16 caracteres",
+    "channelName": "Nome do canal",
+    "channelNameMaxLength": "O nome do canal só pode ter no maximo 32 caracteres",
+    "chooseFile": "Escolher Arquivo...",
+    "close": "Fechar",
+    "confirmPassword": "Confirmar Senha",
+    "email": "Email",
+    "forgotPassword": "Esqueceu a sua senha ?",
+    "password": "Senha",
+    "passwordMinLength": "A senha precisa ter no mínimo 8 caracteres",
+    "removePicture": "Remover Foto",
+    "save": "Salvar",
+    "saved": "Salvo!",
+    "saving": "Salvando...",
+    "uploadAvatar": "Enviar foto de perfil",
+    "username": "Usuário",
+    "usernameOrEmail": "Usuário ou Email"
+  },
+  "numbers": {
+    "billion": "{{count}} bilhão",
+    "billionMinify": "{{count}} bi",
+    "billion_plural": "{{count}} bilhões",
+    "million": "{{count}} milhões",
+    "millionMinify": "{{count}} mi",
+    "million_plural": "{{count}} milhões",
+    "thousand": "{{count}} mil",
+    "thousandMinify": "{{count}} mil",
+    "thousand_plural": "{{count}} mil"
+  },
+  "pages": {
+    "discover": {
+      "title": "Descobrir"
+    },
+    "home": {
+      "followed": "Canais seguidos",
+      "newVideos": "Novos vídeos",
+      "videosai": "Vídeos que achamos que vai gostar"
+    },
+    "live": {
+      "error": "Ainda não suportamos lives, mas fique tranquilo, estamos trabalhando nisso :)"
+    },
+    "newChannel": {
+      "createChannel": "Criar canal",
+      "newChannel": "Novo Canal"
+    },
+    "profile": {
+      "changePassword": "Alterar Senha",
+      "confirmNewPassword": "Confirmar nova senha",
+      "currentPassword": "Senha atual",
+      "email": "Email",
+      "newPassword": "Nova senha",
+      "notSupported": "Não suportado ainda",
+      "password": "Senha",
+      "profile": "Perfil",
+      "publicProfile": "Perfil Publico",
+      "security": "Segurança",
+      "settings": "Configurações",
+      "updatePassword": "Atualizar senha",
+      "updateProfile": "Atualizar perfil",
+      "username": "Nome de usuário"
+    },
+    "recommended": {
+      "title": "Recomendados"
+    },
+    "watch": {
+      "commentPlaceHolder": "Digite aqui um comentário legal e pressione a tecla ENTER para enviar-lo",
+      "followers": "{{countText}} seguidores",
+      "hideDescription": "Ocultar Descrição",
+      "needLogin": {
+        "toLogin": "fazer login",
+        "toSend": "para enviar um comentario",
+        "youNeed": "Você precisa"
+      },
+      "send": "Enviar",
+      "showDescription": "Mostrar Descrição"
+    }
+  },
+  "shared": {
+    "category": "Categoria",
+    "category_plural": "Categorias",
+    "comedy": "Comédia",
+    "dislike": "Descurtir",
+    "dislike_plural": "Descurtidas",
+    "education": "Educação",
+    "follow": "Seguir",
+    "following": "Seguindo",
+    "games": "Jogos",
+    "like": "Curtir",
+    "like_plural": "Curtidas",
+    "recommended": "Recomendado",
+    "recommended_plural": "Recomendados",
+    "report": "Reportar",
+    "science": "Ciência",
+    "share": "Compartilhar",
+    "sports": "Esportes",
+    "unknown": "Desconhecida",
+    "vlogs": "Vlogs"
+  },
+  "time": {
+    "ago": "há {{time}}",
+    "day": "{{count}} dia",
+    "day_plural": "{{count}} dias",
+    "hour": "{{count}} hora",
+    "hour_plural": "{{count}} horas",
+    "minute": "{{count}} minuto",
+    "minute_plural": "{{count}} minutos",
+    "month": "{{count}} mês",
+    "month_plural": "{{count}} meses",
+    "second": "{{count}} segundo",
+    "second_plural": "{{count}} segundos",
+    "week": "{{count}} semana",
+    "week_plural": "{{count}} semanas",
+    "year": "{{count}} ano",
+    "year_plural": "{{count}} anos"
   }
-  
+}

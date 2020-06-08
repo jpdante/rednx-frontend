@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import api from "../../api";
 import $ from "jquery";
 
-import styles from "./uploadavatar.module.scss";
+//import styles from "./uploadavatar.module.scss";
 
 interface IState {
   file: any;

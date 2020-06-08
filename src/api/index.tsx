@@ -12,6 +12,16 @@ const api = {
       captcha,
     });
   },
+  register: async (username: string, email: string, password: string, birthdate: number, captcha: string, lang: string) => {
+    return await net.post("/auth/register", {
+      username,
+      email,
+      password,
+      birthdate,
+      captcha,
+      lang,
+    });
+  },
   checkSession: async (response: any) => {
     let stores = Store.useStores();
     if (!hasToken()) return;

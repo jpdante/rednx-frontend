@@ -1,34 +1,47 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { withTranslation } from "react-i18next";
 import api from "../../api";
-import { Link, navigate } from "@reach/router";
+import { Link } from "@reach/router";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import type { StoreProps } from "../../undux";
 import Store from "../../undux";
 
-import styles from "./login.module.scss";
+import styles from "./auth.module.scss";
+import { getLanguage } from "./../../services/language";
 
 interface IState {
   email: string;
+  username: string;
   password: string;
+  confirmPassword: string;
   error: string;
+  success: string;
   errorData: any;
   captcha: string;
   loading: boolean;
+  birthDate: Date | null;
 }
 
-class Login extends React.Component<StoreProps, IState> {
+class Register extends React.Component<StoreProps, IState> {
   private hCaptchaRef: any = React.createRef();
 
   constructor(props: any) {
     super(props);
     this.state = {
       email: "",
+      username: "",
       password: "",
+      confirmPassword: "",
+      success: "",
       error: "",
       errorData: null,
       captcha: "",
       loading: false,
+      birthDate: new Date(),
     };
   }
 
@@ -43,41 +56,101 @@ class Login extends React.Component<StoreProps, IState> {
       error: "",
       loading: false,
     });
-    const { email, password, captcha } = this.state;
+    const {
+      username,
+      email,
+      password,
+      confirmPassword,
+      birthDate,
+      captcha,
+    } = this.state;
+    if (!username) {
+      this.setState({
+        error: "errors.usernameEmpty",
+        success: "",
+      });
+      return;
+    }
+    if (/^[a-zA-Z0-9_.-]*$/.test(username) === false) {
+      this.setState({
+        error: "errors.usernameInvalid",
+        success: "",
+      });
+      return;
+    }
+    if (username.length < 3 || username.length > 20) {
+      this.setState({
+        error: "errors.usernameSize",
+        success: "",
+      });
+      return;
+    }
     if (!email) {
-      this.setState({ error: "errors.emailEmpty" });
+      this.setState({
+        error: "errors.emailEmpty",
+        success: "",
+      });
       return;
     }
     if (!password) {
-      this.setState({ error: "errors.passwordEmpty" });
+      this.setState({
+        error: "errors.passwordEmpty",
+        success: "",
+      });
       return;
     }
-    if (!captcha) {
-      this.setState({ error: "errors.invalidCaptcha" });
+    if (!confirmPassword) {
+      this.setState({
+        error: "errors.confirmPasswordEmpty",
+        success: "",
+      });
+      return;
+    }
+    if (password !== confirmPassword) {
+      this.setState({
+        error: "errors.passwordsDontMatch",
+        success: "",
+      });
+      return;
+    }
+    if (!birthDate) {
+      this.setState({
+        error: "errors.birthDateEmpty",
+        success: "",
+      });
       return;
     }
     try {
       this.setState({ loading: true });
-      const response = await api.login(email, password, captcha);
+      const response = await api.register(
+        username,
+        email,
+        password,
+        birthDate.getTime() / 1000,
+        captcha,
+        getLanguage()
+      );
       this.setState({ loading: false });
       if (response.data.success) {
-        const { auth, profile } = this.props;
-        profile.set("username")(response.data.account.username);
-        profile.set("picture")(response.data.account.profilePicture);
-        profile.set("email")(email);
-        auth.set("token")(response.data.token);
-        navigate("/");
+        this.setState({
+          loading: false,
+          error: "",
+          success: "modals.accountCreated",
+        });
       } else {
         this.setState({
+          loading: false,
           error: response.data.message,
           errorData: response.data,
+          success: "",
         });
       }
     } catch (err) {
-      console.debug(err);
+      console.log(err);
       this.setState({
         loading: false,
         error: "errors.loginError",
+        success: "",
       });
     }
   };
@@ -91,14 +164,14 @@ class Login extends React.Component<StoreProps, IState> {
             <span style={{ color: "#B10003" }}>Red</span>NX
           </h4>
           <div className={`${styles.bar}`}>
-            <div>
-              <div className={`${styles.button} ${styles.active} float-left`}>
+            <div className="">
+              <div className={`${styles.button} float-left`}>
                 <Link className={`text-center`} to="/login">
                   {t("components.navbar.login")}
                 </Link>
                 <hr />
               </div>
-              <div className={`${styles.button} float-left`}>
+              <div className={`${styles.button} ${styles.active} float-left`}>
                 <Link className={`text-center`} to="/register">
                   {t("components.navbar.register")}
                 </Link>
@@ -114,12 +187,27 @@ class Login extends React.Component<StoreProps, IState> {
                 {t(this.state.error, this.state.errorData)}
               </div>
             )}
+            {this.state.success && (
+              <div className="alert alert-success" role="alert">
+                {t(this.state.success)}
+              </div>
+            )}
+            <div className="form-group">
+              <label>{t("modals.username")}</label>
+              <input
+                type="username"
+                className="form-control"
+                aria-describedby="emailHelp"
+                placeholder={t("modals.username")}
+                required
+                onChange={(e) => this.setState({ username: e.target.value })}
+              />
+            </div>
             <div className="form-group">
               <label>{t("modals.email")}</label>
               <input
                 type="email"
                 className="form-control"
-                aria-describedby="emailHelp"
                 placeholder={t("modals.email")}
                 required
                 onChange={(e) => this.setState({ email: e.target.value })}
@@ -131,6 +219,7 @@ class Login extends React.Component<StoreProps, IState> {
                 type="password"
                 className="form-control"
                 placeholder={t("modals.password")}
+                aria-describedby="passwordHelp"
                 required
                 minLength={8}
                 onChange={(e) => this.setState({ password: e.target.value })}
@@ -140,8 +229,33 @@ class Login extends React.Component<StoreProps, IState> {
               </small>
             </div>
             <div className="form-group">
-              <Link className="form-check-label" to="/forgot-password">
-                {t("modals.forgotPassword")}
+              <label>{t("modals.confirmPassword")}</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder={t("modals.password")}
+                required
+                minLength={8}
+                onChange={(e) =>
+                  this.setState({ confirmPassword: e.target.value })
+                }
+              />
+            </div>
+            <div className="form-group">
+              <label>{t("modals.birthDate")}</label>
+              <DatePicker
+                selected={this.state.birthDate}
+                onChange={(date) => this.setState({ birthDate: date })}
+                maxDate={new Date()}
+                className={`form-control ${styles.birthDateForm}`}
+                dateFormat="dd/MM/yyyy"
+                showMonthDropdown
+                showYearDropdown
+              />
+            </div>
+            <div className="form-group">
+              <Link className="form-check-label" to="/login">
+                {t("modals.alreadyHasAccount")}
               </Link>
             </div>
             <div className="text-center">
@@ -159,7 +273,7 @@ class Login extends React.Component<StoreProps, IState> {
                   <span className="sr-only">Loading...</span>
                 </div>
               ) : (
-                t("components.navbar.login")
+                t("components.navbar.register")
               )}
             </button>
             <div className="text-center my-3">
@@ -183,4 +297,4 @@ class Login extends React.Component<StoreProps, IState> {
   }
 }
 
-export default Store.withStores(withTranslation()(Login));
+export default Store.withStores(withTranslation()(Register));
