@@ -44,7 +44,6 @@ class Home extends React.Component<IProps, IState> {
   }
 
   async setCategory(category: string) {
-    console.log(category);
     if(this.state.category === category) return;
     var categoryName = "";
     switch (category) {
