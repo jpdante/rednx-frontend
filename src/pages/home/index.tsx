@@ -4,25 +4,11 @@ import Loading from "../../components/loading";
 import FeedNewVideos from "../../components/feed/new-videos";
 import { withTranslation, WithTranslation } from "react-i18next";
 import api from "../../api";
+import { VideoThumbnail } from "../../model";
 
-type Video = {
-  title: string;
-  guid: string;
-  views: number;
-  creationDate: number;
-  time: number;
-  thumb: string;
-  channel: Channel;
-};
-
-type Channel = {
-  link: string;
-  name: string;
-  picture: string;
-};
 interface IState {
   loading: boolean;
-  videos: Video[]; 
+  videos: VideoThumbnail[]; 
 }
 
 class Home extends React.Component<WithTranslation, IState> {

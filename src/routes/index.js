@@ -8,6 +8,7 @@ import Register from "../pages/auth/register";
 import Profile from "../pages/profile";
 import NotFound from "../pages/not-found";
 import Category from "../pages/category";
+import Watch from "../pages/watch";
 
 const PrivateRoute = (props) => {
   const stores = Store.useStores();
@@ -25,6 +26,7 @@ function Routes() {
       <Login path="/login" />
       <Register path="/register" />
       <Category path="/category/:category" />
+      <Watch path="/watch/:link" />
       <PrivateRoute path="/profile" component={Profile}/>
       <NotFound path="*" />
     </Router>

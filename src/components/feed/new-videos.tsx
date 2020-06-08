@@ -1,25 +1,10 @@
 import React from "react";
 import VideoThumb from "../video-thumb";
+import { VideoThumbnail } from "../../model";
 
 interface IProps {
-  videos: Video[];
+  videos: VideoThumbnail[];
 }
-
-type Video = {
-  title: string;
-  guid: string;
-  views: number;
-  creationDate: number;
-  time: number;
-  thumb: string;
-  channel: Channel;
-};
-
-type Channel = {
-  link: string;
-  name: string;
-  picture: string;
-};
 
 function FeedNewVideos(props: IProps) {
   return (

@@ -1,0 +1,39 @@
+.videoTitleContainer {
+  background-color: #2c2f31;
+  min-height: 66px;
+  border-radius: 0px 0px 10px 10px;
+
+  .videoIcon {
+    float: left;
+    margin-right: 20px;
+    img {
+      height: 66px;
+      width: 66px;
+      border-radius: 0px 0px 0px 10px;
+    }
+  }
+
+  .videoTitle {
+    padding-top: 5px;
+  }
+
+  .videoClassification {
+    float: right;
+    width: 66px;
+    height: 66px;
+    //background-color: #0f8b43;
+    border-radius: 0px 0px 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+  }
+}
+
+.comment {
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}

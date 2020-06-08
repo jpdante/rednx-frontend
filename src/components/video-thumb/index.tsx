@@ -4,26 +4,11 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./video-thumb.module.scss";
+import { VideoThumbnail } from "../../model";
 
 interface IProps {
-  data: Video;
+  data: VideoThumbnail;
 }
-
-type Video = {
-  title: string;
-  guid: string;
-  views: number;
-  creationDate: number;
-  time: number;
-  thumb: string;
-  channel: Channel;
-};
-
-type Channel = {
-  link: string;
-  name: string;
-  picture: string;
-};
 
 function numberToTime(time: number) {
   var hrs = ~~(time / 3600);

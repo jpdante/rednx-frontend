@@ -4,22 +4,7 @@ import Loading from "../components/loading";
 import { withTranslation, WithTranslation } from "react-i18next";
 import api from "../api";
 import VideoThumb from "../components/video-thumb";
-
-type Video = {
-  title: string;
-  guid: string;
-  views: number;
-  creationDate: number;
-  time: number;
-  thumb: string;
-  channel: Channel;
-};
-
-type Channel = {
-  link: string;
-  name: string;
-  picture: string;
-};
+import { VideoThumbnail } from "../model";
 
 interface IProps extends WithTranslation {
   category?: string;
@@ -27,7 +12,7 @@ interface IProps extends WithTranslation {
 
 interface IState {
   loading: boolean;
-  videos: Video[];
+  videos: VideoThumbnail[];
   category: string;
   categoryName: string;
 }
