@@ -32,8 +32,137 @@
   }
 }
 
-.comment {
-  overflow: hidden;
-  white-space: normal;
-  text-overflow: ellipsis;
+.descriptionContainer {
+  margin-top: 10px;
+
+  .card {
+    margin-top: 10px;
+  }
+
+  .description {
+    overflow: hidden;
+    max-height: 100px;
+    transition: max-height 0.8s cubic-bezier(0, 1, 0, 1);
+  }
+
+  .active {
+    max-height: 1000px !important;
+    transition: max-height 1s ease-in-out;
+  }
+
+  .channelInfoContainer {
+    min-height: 66px;
+  }
+
+  .mobileBox {
+    display: inline;
+  }
+
+  @media (max-width: 992px) {
+    .mobileBox {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .topMobileBox {
+      padding-top: 66px;
+    }
+  }
+
+  .channelImage {
+    position: absolute;
+
+    .aaaaa {
+      display: inline-block;
+    }
+
+    img {
+      border-radius: 50%;
+      height: 66px;
+      width: 66px;
+      margin-right: 10px;
+    }
+
+    .channelNameContainer {
+      height: 66px;
+      float: right;
+
+      .channelName {
+        margin-top: 10px;
+        a {
+          text-decoration: none;
+          color: #c9d2db;
+        }
+      }
+
+      .channelFollowers {
+        margin-top: 5px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .channelButtons {
+    text-align: right;
+    button {
+      margin-left: 10px;
+      margin-top: 10px;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+.commentsContainer {
+  .postComment {
+    .notAuthenticated {
+      margin-top: 15px;
+      text-align: center;
+      a {
+        color: #1c7cd5;
+        cursor: pointer;
+      }
+    }
+
+    .authComment {
+      .sendBtn {
+        margin-top: 5px;
+        float: right;
+      }
+    }
+  }
+
+  .media {
+    margin-top: 10px;
+    font-size: 15px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      margin-right: 16px;
+    }
+
+    textarea {
+      min-height: 50px;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: #c9d2db;
+      font-size: 15px;
+      font-weight: bold;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  .comment {
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+  }
 }

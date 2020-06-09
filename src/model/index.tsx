@@ -35,3 +35,9 @@ export type Channel = {
   picture: string;
   followers: number;
 };
+
+export type UserInfo = {
+  disliked: boolean;
+  liked: boolean;
+  following: boolean;
+};

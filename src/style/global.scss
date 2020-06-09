@@ -48,6 +48,13 @@ html,
   .sidebar {
     height: calc(100% - 94px) !important;
   }
+
+  .fullscreen {
+    width: 100%;
+    margin-left: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 @media (max-width: 1068px) and (min-width: 768px) {
@@ -95,21 +102,6 @@ html,
   }
 }
 
-// SideBar
-
-.sidebar {
-  background-color: #212224;
-  width: 240px;
-  min-width: 240px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  height: calc(100% - 56px);
-  color: #d6d6d6;
-  overflow: auto;
-  z-index: 10;
-  position: fixed;
-}
-
 // Pages
 
 .feed-list {
@@ -125,7 +117,28 @@ html,
   }
 }
 
+// Player
+
+.plyr {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 5px 5px 0px 0px;
+}
+
+// Register
+
 .react-datepicker-wrapper {
   display: block !important;
   width: 100% !important;
+}
+
+.react-datepicker-popper {
+  z-index: 2;
+  top: 34px !important;
+  /* needed because we made it inline */
+}
+
+.react-datepicker-wrapper,
+.react-datepicker-wrapper .react-datepicker__input-container {
+  display: inline;
 }

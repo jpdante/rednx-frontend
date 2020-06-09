@@ -2,6 +2,7 @@ import React from "react";
 import dashjs from "dashjs";
 import Plyr from "plyr";
 import $ from "jquery";
+import "plyr/src/sass/plyr.scss";
 
 class Player extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Player extends React.Component {
 
   componentDidMount() {
     const video = document.querySelector("video");
-    if(video === null) return;
+    if (video === null) return;
     const player = new Plyr(video, {
       captions: { active: true, update: true },
       /*quality: {
@@ -27,10 +28,8 @@ class Player extends React.Component {
       },*/
     });
 
-    this.setState({
-      player: player,
-      sourceData: [
-        /*{
+    const sourceData = [
+      /*{
           src: "http://localhost:3000/assets/video/1080.mpd",
           size: 1080,
           mode: "mpd", // How to analyze
@@ -40,7 +39,11 @@ class Player extends React.Component {
           size: 480,
           mode: "mpd", // How to analyze
         }*/
-      ],
+    ];
+
+    this.setState({
+      player,
+      sourceData,
     });
 
     player.source = {
@@ -51,14 +54,12 @@ class Player extends React.Component {
     };
 
     player.on("qualitychange", (event) => {
-      this.initPlayer();
+      this.initPlayer(this.state.sourceData, this.state.player);
     });
-    this.initPlayer();
+    this.initPlayer(sourceData, player);
   }
-  
-  initPlayer() {
-    const { sourceData, player } = this.state;
-    console.log(player);
+
+  initPlayer(sourceData, player) {
     $.each(sourceData, function () {
       const video = document.querySelector("video");
       $.each(sourceData, function () {

@@ -5,9 +5,10 @@ import { Video } from "../../model";
 import styles from "./watch.module.scss";
 import TextareaAutosize from "react-autosize-textarea";
 import { withTranslation } from "react-i18next";
-import api from "../../api";
 import { StoreProps } from "../../undux";
 import Store from "../../undux";
+import net from "../../services/net";
+import { navigate, Link } from "@reach/router";
 
 interface IProps extends StoreProps {
   video: Video | null;
@@ -23,17 +24,17 @@ class Description extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      video: null,
+      video: props.video,
       tempComment: "",
       comments: [],
     };
   }
 
-  async sendComment(e: any) {
+  sendComment = async (e: any) => {
     e.preventDefault();
-    if (!this.props.auth.get("isLogged")) return;
+    const { t, auth } = this.props;
+    if (!auth.get("isLogged")) return;
     if (this.state.video === undefined || this.state.video === null) return;
-    const { t } = this.props;
     if (this.state.tempComment.length < 10) {
       alert(t("errors.commentTooSmall"));
       return;
@@ -46,10 +47,15 @@ class Description extends React.Component<IProps, IState> {
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
-    const response = await api.sendComment(
-      this.state.video.id,
-      this.state.tempComment
-    );
+    const { video, tempComment } = this.state;
+    const response = await net.post("/comment/put", {
+      id: video.id,
+      comment: tempComment,
+    });
+    if (response.data.invalidSession === true) {
+      this.props.auth.set("token")(null);
+      navigate("/");
+    }
     if (response.data.success) {
       var commentsArray = this.state.comments;
       commentsArray.unshift({
@@ -68,11 +74,14 @@ class Description extends React.Component<IProps, IState> {
     } else {
       alert(t(response.data.message));
     }
-  }
+  };
 
   async componentDidMount() {
     if (this.state.video === undefined || this.state.video === null) return;
-    let response = await api.getComments(this.state.video.id);
+    const { video } = this.state;
+    const response = await net.post("/comment/get", {
+      id: video.id,
+    });
     if (response.data.success) {
       var commentsArray = this.state.comments;
       response.data.comments.forEach((comment: any) => {
@@ -129,9 +138,9 @@ class Description extends React.Component<IProps, IState> {
           ) : (
             <h5 className={styles.notAuthenticated}>
               {t("pages.watch.needLogin.youNeed")}{" "}
-              <a role="button" data-toggle="modal" data-target="#loginModal">
+              <Link to="/login">
                 {t("pages.watch.needLogin.toLogin")}
-              </a>{" "}
+              </Link>{" "}
               {t("pages.watch.needLogin.toSend")}
             </h5>
           )}

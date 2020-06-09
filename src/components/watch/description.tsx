@@ -1,16 +1,17 @@
 import React from "react";
-import { Video } from "../../model";
+import { Video, UserInfo } from "../../model";
 
 import styles from "./watch.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "@reach/router";
 import { withTranslation } from "react-i18next";
-import api from "../../api";
 import { StoreProps } from "../../undux";
 import Store from "../../undux";
+import net from "../../services/net";
 
 interface IProps extends StoreProps {
   video: Video | null;
+  userInfo: UserInfo | null;
 }
 
 interface IState {
@@ -22,13 +23,13 @@ interface IState {
 }
 
 class Description extends React.Component<IProps, IState> {
-  constructor(props: any) {
+  constructor(props: IProps) {
     super(props);
     this.state = {
-      video: null,
-      like: false,
-      dislike: false,
-      following: false,
+      video: props.video,
+      like: props.userInfo?.liked || false,
+      dislike: props.userInfo?.disliked || false,
+      following: props.userInfo?.following || false,
       showDescription: false,
     };
   }
@@ -36,17 +37,24 @@ class Description extends React.Component<IProps, IState> {
   follow = async (e: any) => {
     e.preventDefault();
     if (!this.props.auth.get("isLogged")) return;
-    if (this.state.video === undefined || this.state.video === null) return;
-    if (this.state.following) {
+    const { video, following } = this.state;
+    if (video === undefined || video === null) return;
+    if (following) {
       this.setState({
         following: false,
       });
-      await api.updateFollow(this.state.video.channel.id, false);
+      await net.post("/channel/follow", {
+        id: video.channel.id,
+        value: false,
+      });
     } else {
       this.setState({
         following: true,
       });
-      await api.updateFollow(this.state.video.channel.id, true);
+      await net.post("/channel/follow", {
+        id: video.channel.id,
+        value: true,
+      });
     }
   };
 
@@ -66,38 +74,52 @@ class Description extends React.Component<IProps, IState> {
   like = async (e: any) => {
     e.preventDefault();
     if (!this.props.auth.get("isLogged")) return;
-    if (this.state.video === undefined || this.state.video === null) return;
-    if (this.state.like) {
+    const { video, like } = this.state;
+    if (video === undefined || video === null) return;
+    if (like) {
       this.setState({
         like: false,
         dislike: false,
       });
-      await api.updateLike(this.state.video.id, null);
+      await net.post("/video/like", {
+        id: video.id,
+        value: null,
+      });
     } else {
       this.setState({
         like: true,
         dislike: false,
       });
-      await api.updateLike(this.state.video.id, true);
+      await net.post("/video/like", {
+        id: video.id,
+        value: true,
+      });
     }
   };
 
   dislike = async (e: any) => {
     e.preventDefault();
     if (!this.props.auth.get("isLogged")) return;
-    if (this.state.video === undefined || this.state.video === null) return;
-    if (this.state.dislike) {
+    const { video, dislike } = this.state;
+    if (video === undefined || video === null) return;
+    if (dislike) {
       this.setState({
         like: false,
         dislike: false,
       });
-      await api.updateLike(this.state.video.id, null);
+      await net.post("/video/like", {
+        id: video.id,
+        value: null,
+      });
     } else {
       this.setState({
         like: false,
         dislike: true,
       });
-      await api.updateLike(this.state.video.id, false);
+      await net.post("/video/like", {
+        id: video.id,
+        value: false,
+      });
     }
   };
 
@@ -122,9 +144,12 @@ class Description extends React.Component<IProps, IState> {
     const { t } = this.props;
     return (
       <div className={styles.descriptionContainer}>
-        <div className="row">
-          <div className={`${styles.channelImage} col-lg-12 col-xl-6`}>
-            <Link to={`/channel/${this.state.video?.channel.link}`}>
+        <div className={styles.channelInfoContainer}>
+          <div className={styles.channelImage}>
+            <Link
+              className={styles.aaaaa}
+              to={`/channel/${this.state.video?.channel.link}`}
+            >
               <img
                 src={`/assets/${this.state.video?.channel.picture}`}
                 alt="Avatar do Canal"
@@ -146,49 +171,55 @@ class Description extends React.Component<IProps, IState> {
               </div>
             </div>
           </div>
-          <div className={`${styles.channelButtons} col-lg-12 col-xl-6`}>
-            <button
-              type="button"
-              className={`btn ${this.state.like ? "btn-primary" : ""}`}
-              onClick={this.like}
-            >
-              <FontAwesomeIcon icon="thumbs-up" className={styles.icon} />
-              &nbsp;&nbsp; {t("shared.like")}
-            </button>
-            <button
-              type="button"
-              className={`btn ${this.state.dislike ? "btn-primary" : ""}`}
-              onClick={this.dislike}
-            >
-              <FontAwesomeIcon icon="thumbs-down" className={styles.icon} />
-              &nbsp;&nbsp; {t("shared.dislike")}
-            </button>
-            <button type="button" className="btn">
-              <FontAwesomeIcon icon="share" className={styles.icon} />
-              &nbsp;&nbsp; {t("shared.share")}
-            </button>
-            <button
-              type="button"
-              className="btn"
-              data-toggle="modal"
-              data-target="#reportModal"
-              title={t("shared.report")}
-            >
-              <FontAwesomeIcon icon="flag" className={styles.icon} />
-            </button>
-            <button
-              type="button"
-              className={`btn ${
-                this.state.following ? "btn-primary" : "btn-outline-primary"
-              }`}
-              onClick={this.follow}
-            >
-              <FontAwesomeIcon icon="heart" className={styles.icon} />
-              &nbsp;&nbsp;{" "}
-              {this.state.following
-                ? t("shared.following")
-                : t("shared.follow")}
-            </button>
+          <div className={styles.channelButtons}>
+            <div className={`${styles.mobileBox} ${styles.topMobileBox}`}>
+              <button
+                type="button"
+                className={`btn btn-sm ${this.state.like ? "btn-primary" : ""}`}
+                onClick={this.like}
+              >
+                <FontAwesomeIcon icon="thumbs-up" className={styles.icon} />
+                &nbsp;&nbsp; {t("shared.like")}
+              </button>
+              <button
+                type="button"
+                className={`btn btn-sm ${
+                  this.state.dislike ? "btn-primary" : ""
+                }`}
+                onClick={this.dislike}
+              >
+                <FontAwesomeIcon icon="thumbs-down" className={styles.icon} />
+                &nbsp;&nbsp; {t("shared.dislike")}
+              </button>
+            </div>
+            <div className={styles.mobileBox}>
+              <button type="button" className="btn btn-sm">
+                <FontAwesomeIcon icon="share" className={styles.icon} />
+                &nbsp;&nbsp; {t("shared.share")}
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm"
+                data-toggle="modal"
+                data-target="#reportModal"
+                title={t("shared.report")}
+              >
+                <FontAwesomeIcon icon="flag" className={styles.icon} />
+              </button>
+              <button
+                type="button"
+                className={`btn btn-sm ${
+                  this.state.following ? "btn-primary" : "btn-outline-primary"
+                }`}
+                onClick={this.follow}
+              >
+                <FontAwesomeIcon icon="heart" className={styles.icon} />
+                &nbsp;&nbsp;{" "}
+                {this.state.following
+                  ? t("shared.following")
+                  : t("shared.follow")}
+              </button>
+            </div>
           </div>
         </div>
         <div className={`${styles.card} card`}>

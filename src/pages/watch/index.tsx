@@ -2,18 +2,19 @@ import React from "react";
 
 import Loading from "../../components/loading";
 import { withTranslation, WithTranslation } from "react-i18next";
-import api from "../../api";
-import { Video } from "../../model";
+import { Video, UserInfo } from "../../model";
 
 import styles from "./watch.module.scss";
 import Player from "../../components/player";
 import TitleBar from "../../components/watch/title-bar";
 import Description from "../../components/watch/description";
 import Comments from "../../components/watch/comments";
+import net from "../../services/net";
 
 interface IState {
   loading: boolean;
   video: Video | null;
+  userInfo: UserInfo | null;
 }
 
 interface IProps extends WithTranslation {
@@ -26,16 +27,21 @@ class Watch extends React.Component<IProps, IState> {
     this.state = {
       loading: true,
       video: null,
+      userInfo: null,
     };
   }
 
   async componentDidMount() {
     if (this.props.link === undefined || this.props.link === null) return;
-    const response = await api.getVideo(this.props.link);
+    const { link } = this.props;
+    const response = await net.post("/video/get", {
+      id: link,
+    });
     if (response.data.success) {
       this.setState({
         loading: false,
         video: response.data.video,
+        userInfo: response.data.userInfo,
       });
     }
   }
@@ -51,7 +57,7 @@ class Watch extends React.Component<IProps, IState> {
         >
           <Player video={this.state.video} />
           <TitleBar video={this.state.video} />
-          <Description video={this.state.video} />
+          <Description video={this.state.video} userInfo={this.state.userInfo} />
           <Comments video={this.state.video} />
         </div>
         <div

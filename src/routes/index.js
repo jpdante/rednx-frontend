@@ -20,8 +20,9 @@ const PrivateRoute = (props) => {
 }
 
 function Routes() {
+  let stores = Store.useStores();
   return (
-    <Router className="page-content">
+    <Router className={`page-content ${stores.sidebar.get("show") ? "" : "fullscreen"}`}>
       <Home path="/" />
       <Login path="/login" />
       <Register path="/register" />

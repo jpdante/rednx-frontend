@@ -1,7 +1,7 @@
 import { StoreEffects } from "./index";
 import { deleteToken, hasToken, setToken } from './../services/auth';
 
-export const withEffects: StoreEffects = ({ auth, profile }) => {
+export const withEffects: StoreEffects = ({ auth, profile, sidebar }) => {
   // AUTH
 
   auth.on("token").subscribe((next) => {
@@ -28,5 +28,5 @@ export const withEffects: StoreEffects = ({ auth, profile }) => {
     if(next !== null) localStorage.setItem("profile.email", next);
   });
 
-  return { auth, profile };
+  return { auth, profile, sidebar };
 };

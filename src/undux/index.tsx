@@ -19,6 +19,10 @@ type ProfileState = {
   email: string | null;
 };
 
+type SideBarState = {
+  show: boolean;
+};
+
 let initialAuthState: AuthState = {
   isLogged: hasToken(),
   token: null
@@ -30,15 +34,21 @@ let initialProfileState: ProfileState = {
   email: localStorage.getItem("profile.email"),
 };
 
+let initialSideBarState: SideBarState = {
+  show: true
+};
+
 export default createConnectedStoreAs(
   {
     auth: initialAuthState,
     profile: initialProfileState,
+    sidebar: initialSideBarState,
   },
   (stores) => {
     return withEffects({
       auth: withReduxDevtools(stores.auth),
       profile: withReduxDevtools(stores.profile),
+      sidebar: withReduxDevtools(stores.sidebar),
     });
   }
 );
@@ -46,9 +56,11 @@ export default createConnectedStoreAs(
 export type StoreProps = WithTranslation & {
   auth: Store<AuthState>;
   profile: Store<ProfileState>;
+  sidebar: Store<SideBarState>;
 };
 
 export type StoreEffects = EffectsAs<{
   auth: AuthState;
   profile: ProfileState;
+  sidebar: SideBarState;
 }>;

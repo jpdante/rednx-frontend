@@ -1,0 +1,20 @@
+.playerContainer {
+  width: 100% !important;
+}
+
+.videosContainer {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin: 10px -5px 0 -5px;
+}
+
+@media (max-width: 1200px) {
+  .videosContainer {
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+}
