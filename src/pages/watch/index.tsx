@@ -34,9 +34,19 @@ class Watch extends React.Component<IProps, IState> {
     };
   }
 
+  async componentWillReceiveProps(nextProps: IProps) {
+    await this.loadVideoData(nextProps.link);
+  }
+
   async componentDidMount() {
-    if (this.props.link === undefined || this.props.link === null) return;
-    const { link } = this.props;
+    await this.loadVideoData(this.props.link);
+  }
+
+  async loadVideoData(link: string | undefined) {
+    if (link === undefined || link === null) return;
+    this.setState({
+      loading: true,
+    });
     const response = await net.post("/video/get", {
       id: link,
     });

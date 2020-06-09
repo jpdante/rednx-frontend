@@ -1,6 +1,11 @@
 .videoThumb {
   margin-bottom: 10px;
 
+  .videoLink {
+    text-decoration: none;
+    color: #c9d2db;
+  }
+
   .videoInfo {
     .channelImage {
       margin-right: 10px;
@@ -37,6 +42,8 @@
 
     .videoTitle {
       margin: 0;
+      text-decoration: none;
+      color: #c9d2db;
     }
   }
 

@@ -82,26 +82,31 @@ function CompactVideoThumb(props: IProps) {
     <div className={`${styles.videoThumb} col-12`}>
       <div className={`no-gutters row`}>
         <div className="col-6">
-          <div className={`${styles.video}`}>
-            <div className={styles.overlay}>
-              <div className={styles.playIcon}>
-                <FontAwesomeIcon icon="play" size="lg" />
-              </div>
-              <div className={styles.spaceConsumer}></div>
-              <div className={styles.videoData}>
-                <div
-                  className={`${styles.infoOverlay} ${styles.playTime} float-right`}
-                >
-                  {numberToTime(props.data.time)}
+          <Link
+            to={`/watch/${props.data.guid}`}
+            className={`${styles.videoLink}`}
+          >
+            <div className={`${styles.video}`}>
+              <div className={styles.overlay}>
+                <div className={styles.playIcon}>
+                  <FontAwesomeIcon icon="play" size="lg" />
+                </div>
+                <div className={styles.spaceConsumer}></div>
+                <div className={styles.videoData}>
+                  <div
+                    className={`${styles.infoOverlay} ${styles.playTime} float-right`}
+                  >
+                    {numberToTime(props.data.time)}
+                  </div>
                 </div>
               </div>
+              <img
+                src="/assets/thumb.jpg"
+                alt="Thumbnail do video"
+                className={styles.image}
+              />
             </div>
-            <img
-              src="/assets/thumb.jpg"
-              alt="Thumbnail do video"
-              className={styles.image}
-            />
-          </div>
+          </Link>
         </div>
         <div className="col-6">
           <div className={styles.videoInfo}>
