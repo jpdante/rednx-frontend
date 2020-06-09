@@ -4,7 +4,6 @@ import { VideoThumbnail } from "../../model";
 
 import net from "../../services/net";
 import CompactVideoThumb from "../../components/compact-video-thumb";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface IState {
   loading: boolean;
