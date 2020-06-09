@@ -2,19 +2,21 @@ import React from "react";
 
 import Loading from "../../components/loading";
 import { withTranslation, WithTranslation } from "react-i18next";
-import { Video, UserInfo } from "../../model";
+import { Video, UserInfo, VideoThumbnail } from "../../model";
 
 import styles from "./watch.module.scss";
+import net from "../../services/net";
 import Player from "../../components/player";
 import TitleBar from "../../components/watch/title-bar";
 import Description from "../../components/watch/description";
 import Comments from "../../components/watch/comments";
-import net from "../../services/net";
+import WatchFeed from "../../components/feed/watch-feed";
 
 interface IState {
   loading: boolean;
   video: Video | null;
   userInfo: UserInfo | null;
+  nextVideos: VideoThumbnail[];
 }
 
 interface IProps extends WithTranslation {
@@ -28,6 +30,7 @@ class Watch extends React.Component<IProps, IState> {
       loading: true,
       video: null,
       userInfo: null,
+      nextVideos: [],
     };
   }
 
@@ -44,6 +47,10 @@ class Watch extends React.Component<IProps, IState> {
         userInfo: response.data.userInfo,
       });
     }
+    const response2 = await net.get("/feed/newvideos");
+    this.setState({
+      nextVideos: response2.data,
+    });
   }
 
   render() {
@@ -57,13 +64,16 @@ class Watch extends React.Component<IProps, IState> {
         >
           <Player video={this.state.video} />
           <TitleBar video={this.state.video} />
-          <Description video={this.state.video} userInfo={this.state.userInfo} />
+          <Description
+            video={this.state.video}
+            userInfo={this.state.userInfo}
+          />
           <Comments video={this.state.video} />
         </div>
         <div
           className={`${styles.videosContainer} col-sm-12 col-md-12 col-lg-12 col-xl-3`}
         >
-          <div className={`row`}></div>
+          <WatchFeed />
         </div>
       </div>
     );

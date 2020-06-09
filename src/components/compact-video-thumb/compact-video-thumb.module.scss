@@ -1,0 +1,112 @@
+.videoThumb {
+  margin-bottom: 10px;
+
+  .videoInfo {
+    .channelImage {
+      margin-right: 10px;
+
+      img {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+      }
+    }
+
+    .channelName {
+      margin-top: -5px;
+      a {
+        color: #acacac;
+        text-decoration: none;
+        font-size: 12px;
+      }
+    }
+
+    .videoDate {
+      margin-top: -2px;
+      color: #acacac;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .videoViews {
+      margin-top: -2px;
+      color: #acacac;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .videoTitle {
+      margin: 0;
+    }
+  }
+
+  .video {
+    margin-bottom: 5px;
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+
+    &:hover {
+      .image {
+        filter: brightness(50%);
+        -webkit-filter: brightness(50%);
+      }
+      .overlay {
+        .playIcon {
+          opacity: 1;
+        }
+      }
+    }
+
+    .image {
+      width: 100%;
+      height: auto;
+      transition: 0.2s ease;
+      border-radius: 5px;
+    }
+
+    .overlay {
+      position: absolute;
+      padding: 5px;
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+
+      .playIcon {
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        text-align: center;
+        transition: 0.2s ease;
+      }
+
+      .spaceConsumer {
+        height: calc(100% - 40px);
+      }
+
+      .videoData {
+        width: 100%;
+        overflow: auto;
+
+        .infoOverlay {
+          padding: 2px 5px 2px 5px;
+          background-color: rgba(0, 0, 0, 0.8);
+          font-size: 12px;
+          border-radius: 5px;
+
+          p {
+            margin: 0;
+          }
+        }
+
+        .playTime {
+          margin-top: 18px;
+        }
+      }
+    }
+  }
+}

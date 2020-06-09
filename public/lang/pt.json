@@ -133,7 +133,7 @@
       "title": "Recomendados"
     },
     "watch": {
-      "commentPlaceHolder": "Digite aqui um comentário legal e pressione a tecla ENTER para enviar-lo",
+      "commentPlaceHolder": "Digite aqui um comentário legal.",
       "followers": "{{countText}} seguidores",
       "hideDescription": "Ocultar Descrição",
       "needLogin": {

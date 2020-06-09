@@ -133,7 +133,7 @@
       "title": "Recommended"
     },
     "watch": {
-      "commentPlaceHolder": "Type a nice comment here and press the ENTER key to send it",
+      "commentPlaceHolder": "Type a nice comment here.",
       "followers": "{{countText}} followers",
       "hideDescription": "Hide Description",
       "needLogin": {
