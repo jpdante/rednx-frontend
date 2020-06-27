@@ -4,6 +4,7 @@ import { Link } from "@reach/router";
 import Store from "../../undux";
 
 import styles from "./navbar.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function UserBar() {
   const { t } = useTranslation();
@@ -15,6 +16,28 @@ function UserBar() {
 
   return (
     <ul className="nav navbar-nav ml-auto w-100 justify-content-end">
+      <li className="nav-item mr-3">
+        <a
+          className="nav-link active"
+          href="/"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <FontAwesomeIcon icon="cloud-upload-alt" />
+        </a>
+      </li>
+      <li className="nav-item mr-3">
+        <a
+          className="nav-link active"
+          href="/"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <FontAwesomeIcon icon="bell" />
+        </a>
+      </li>
       <li className="nav-item dropdown">
         <a
           className={`${styles.userBar} nav-link`}
@@ -23,7 +46,7 @@ function UserBar() {
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <div>
+          <div className={styles.profileIcon}>
             <img
               src={`http://s3.tryhosting.com.br/pp/${stores.profile.get(
                 "picture"

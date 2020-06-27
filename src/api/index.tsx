@@ -64,12 +64,6 @@ const api = {
     await api.checkSession(response);
     return response;
   },
-  getChannel: async (link: string) => {
-    const response = await net.post("/channel/get", {
-      link,
-    });
-    return response;
-  },
   // ~~~~ FEED ~~~~
   getNewVideos: async () => {
     return await net.get("/feed/newvideos");

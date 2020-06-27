@@ -1,10 +1,12 @@
 import React from "react";
 
-import Loading from "../components/loading";
+import Loading from "../../components/loading";
 import { withTranslation, WithTranslation } from "react-i18next";
-import api from "../api";
-import VideoThumb from "../components/video-thumb";
-import { VideoThumbnail } from "../model";
+import api from "../../api";
+import VideoThumb from "../../components/video-thumb";
+import { VideoThumbnail } from "../../model";
+
+import styles from "./category.module.scss";
 
 interface IProps extends WithTranslation {
   category?: string;
@@ -29,7 +31,7 @@ class Home extends React.Component<IProps, IState> {
   }
 
   async setCategory(category: string) {
-    if(this.state.category === category) return;
+    if (this.state.category === category) return;
     var categoryName = "";
     switch (category) {
       case "science":
@@ -81,6 +83,7 @@ class Home extends React.Component<IProps, IState> {
     }
     return (
       <div className="feed-list">
+        <div className={styles.cover}></div>
         <h5>{t("pages.home.videosai")}</h5>
         <hr />
         <div className="row">

@@ -1,0 +1,90 @@
+.replacePadding {
+  padding: 0 !important;
+}
+
+.cover {
+  width: 100%;
+  height: 200px;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.contentPadding {
+  padding: 0px 60px 20px 60px;
+}
+
+@media (max-width: 768px) {
+  .contentPadding {
+    padding: 0px 10px 20px 10px;
+  }
+}
+
+@media (max-width: 1068px) and (min-width: 768px) {
+  .contentPadding {
+    padding: 0px 30px 20px 30px;
+  }
+}
+
+@media (max-width: 1668px) and (min-width: 1068px) {
+  .contentPadding {
+    padding: 0px 40px 20px 40px;
+  }
+}
+
+.channelLogo {
+  img {
+    float: left;
+    border-radius: 50%;
+    height: 76px;
+    width: 76px;
+    margin-right: 10px;
+  }
+
+  .channelNameContainer {
+    height: 76px;
+    float: none;
+
+    .channelName {
+      margin-top: 7px;
+      a {
+        text-decoration: none;
+        color: #c9d2db;
+        font-size: 25px;
+      }
+    }
+
+    .channelFollowers {
+      margin-top: 0px;
+      font-size: 15px;
+    }
+  }
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+.followersText {
+  background-color: darken($primary, 10%) !important;
+  cursor: default !important;
+}
+
+.channelButtons {
+  text-align: right;
+  button {
+    margin-left: 10px;
+    margin-top: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 1199px) {
+  .channelButtons {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
