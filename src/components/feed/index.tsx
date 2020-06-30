@@ -6,7 +6,7 @@ interface IProps {
   videos: VideoThumbnail[];
 }
 
-function FeedNewVideos(props: IProps) {
+function VideoFeed(props: IProps) {
   return (
     <div className="row">
       {props.videos.map((item) => (
@@ -16,4 +16,4 @@ function FeedNewVideos(props: IProps) {
   );
 }
 
-export default FeedNewVideos;
+export default VideoFeed;

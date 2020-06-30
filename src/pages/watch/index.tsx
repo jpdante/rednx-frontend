@@ -2,7 +2,7 @@ import React from "react";
 
 import Loading from "../../components/loading";
 import { withTranslation, WithTranslation } from "react-i18next";
-import { Video, UserInfo, VideoThumbnail } from "../../model";
+import { Video, UserInfo } from "../../model";
 
 import styles from "./watch.module.scss";
 import net from "../../services/net";
@@ -16,7 +16,6 @@ interface IState {
   loading: boolean;
   video: Video | null;
   userInfo: UserInfo | null;
-  nextVideos: VideoThumbnail[];
 }
 
 interface IProps extends WithTranslation {
@@ -30,11 +29,10 @@ class Watch extends React.Component<IProps, IState> {
       loading: true,
       video: null,
       userInfo: null,
-      nextVideos: [],
     };
   }
 
-  async componentWillReceiveProps(nextProps: IProps) {
+  async UNSAFE_componentWillReceiveProps(nextProps: IProps) {
     await this.loadVideoData(nextProps.link);
   }
 
@@ -57,10 +55,6 @@ class Watch extends React.Component<IProps, IState> {
         userInfo: response.data.userInfo,
       });
     }
-    const response2 = await net.get("/feed/newvideos");
-    this.setState({
-      nextVideos: response2.data,
-    });
   }
 
   render() {

@@ -151,7 +151,7 @@ class Description extends React.Component<IProps, IState> {
               to={`/channel/${this.state.video?.channel.link}`}
             >
               <img
-                src={`/assets/${this.state.video?.channel.picture}`}
+                src={`/assets/${this.state.video?.channel.picture || "default"}`}
                 alt="Avatar do Canal"
               />
             </Link>

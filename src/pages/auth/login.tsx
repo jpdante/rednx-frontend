@@ -1,12 +1,12 @@
 import React from "react";
 import { withTranslation } from "react-i18next";
-import api from "../../api";
 import { Link, navigate } from "@reach/router";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import type { StoreProps } from "../../undux";
 import Store from "../../undux";
 
 import styles from "./auth.module.scss";
+import net from "../../services/net";
 
 interface IState {
   email: string;
@@ -58,12 +58,16 @@ class Login extends React.Component<StoreProps, IState> {
     }
     try {
       this.setState({ loading: true });
-      const response = await api.login(email, password, captcha);
+      const response = await net.post("/auth/login", {
+        email,
+        password,
+        captcha,
+      });
       this.setState({ loading: false });
       if (response.data.success) {
         const { auth, profile } = this.props;
         profile.set("username")(response.data.account.username);
-        profile.set("picture")(response.data.account.profilePicture);
+        profile.set("picture")(response.data.account.profilePicture || "default");
         profile.set("email")(email);
         auth.set("token")(response.data.token);
         navigate("/");

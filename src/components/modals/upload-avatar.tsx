@@ -5,8 +5,9 @@ import Store from "../../undux";
 
 import AvatarEditor from "react-avatar-editor";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import api from "../../api";
 import $ from "jquery";
+import net from "../../services/net";
+import { navigate } from "@reach/router";
 
 //import styles from "./uploadavatar.module.scss";
 
@@ -65,7 +66,13 @@ class UploadAvatar extends Component<StoreProps, IState> {
       try {
         this.setState({ uploading: true });
         const canvas = this.avatarEditor.getImage().toDataURL("image/png");
-        const response = await api.uploadProfilePicture(canvas);
+        const response = await net.post("/profile/putpicture", {
+          picture: canvas,
+        });
+        if (response.data.invalidSession === true) {
+          this.props.auth.set("token")(null);
+          navigate("/");
+        }
         if (response.data.success) {
           this.setState({ uploading: false, success: true });
           this.props.profile.set("picture")(response.data.guid);

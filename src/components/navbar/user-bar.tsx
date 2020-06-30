@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "@reach/router";
@@ -19,18 +20,7 @@ function UserBar() {
       <li className="nav-item mr-3">
         <a
           className="nav-link active"
-          href="/"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <FontAwesomeIcon icon="cloud-upload-alt" />
-        </a>
-      </li>
-      <li className="nav-item mr-3">
-        <a
-          className="nav-link active"
-          href="/"
+          href="#"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
@@ -41,14 +31,14 @@ function UserBar() {
       <li className="nav-item dropdown">
         <a
           className={`${styles.userBar} nav-link`}
-          href="/"
+          href="#"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
           <div className={styles.profileIcon}>
             <img
-              src={`http://s3.tryhosting.com.br/pp/${stores.profile.get(
+              src={`https://storage.bhs.cloud.ovh.net/v1/AUTH_d86662c318654f248055a1f464721aa8/public/pp/${stores.profile.get(
                 "picture"
               )}.webp`}
               width="30"

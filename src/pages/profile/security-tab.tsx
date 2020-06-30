@@ -3,11 +3,15 @@ import type { StoreProps } from "../../undux";
 import Store from "../../undux";
 import { withTranslation } from "react-i18next";
 import { Link } from "@reach/router";
+import net from "../../services/net";
 
 interface IState {
   currentPassword: string;
   newPassword: string;
-  confirmNewPassword: string;
+  newConfirmPassword: string;
+  message: string;
+  messageData: any;
+  error: boolean;
   loading: boolean;
 }
 
@@ -17,13 +21,49 @@ class SecurityTab extends React.Component<StoreProps, IState> {
     this.state = {
       currentPassword: "",
       newPassword: "",
-      confirmNewPassword: "",
+      newConfirmPassword: "",
       loading: false,
+      message: "",
+      messageData: null,
+      error: false,
     };
   }
 
   handleSubmit = async (e: any) => {
     e.preventDefault();
+    const { currentPassword, newPassword, newConfirmPassword } = this.state;
+    if (!currentPassword || !newPassword || !newConfirmPassword) {
+      this.setState({ message: "errors.passwordEmpty", error: true });
+      return;
+    }
+    if (newPassword !== newConfirmPassword) {
+      this.setState({ message: "errors.passwordsDontMatch", error: true });
+      return;
+    }
+    this.setState({ loading: true });
+    const response = await net.post("/profile/changepassword", {
+      currentPassword,
+      newPassword,
+      newConfirmPassword,
+    });
+    if (response.data.success) {
+      this.setState({
+        message: "successes.passwordChanged",
+        messageData: response.data,
+        error: false,
+        currentPassword: "",
+        newPassword: "",
+        newConfirmPassword: "",
+        loading: false,
+      });
+    } else {
+      this.setState({
+        message: response.data.message,
+        messageData: response.data,
+        error: true,
+        loading: false,
+      });
+    }
   };
 
   render() {
@@ -33,12 +73,23 @@ class SecurityTab extends React.Component<StoreProps, IState> {
         <h4>{t("pages.profile.changePassword")}</h4>
         <hr />
         <form onSubmit={this.handleSubmit}>
+          {this.state.message && (
+            <div
+              className={`alert ${
+                this.state.error ? "alert-danger" : "alert-success"
+              }`}
+              role="alert"
+            >
+              {t(this.state.message, this.state.messageData)}
+            </div>
+          )}
           <div className="form-group">
             <label>{t("pages.profile.currentPassword")}</label>
             <input
               type="password"
               className="form-control"
               required
+              minLength={8}
               value={this.state.currentPassword}
               onChange={(e) =>
                 this.setState({ currentPassword: e.target.value })
@@ -52,6 +103,7 @@ class SecurityTab extends React.Component<StoreProps, IState> {
               type="password"
               className="form-control"
               required
+              minLength={8}
               value={this.state.newPassword}
               onChange={(e) => this.setState({ newPassword: e.target.value })}
               autoComplete="new-password"
@@ -66,9 +118,10 @@ class SecurityTab extends React.Component<StoreProps, IState> {
               type="password"
               className="form-control"
               required
-              value={this.state.confirmNewPassword}
+              minLength={8}
+              value={this.state.newConfirmPassword}
               onChange={(e) =>
-                this.setState({ confirmNewPassword: e.target.value })
+                this.setState({ newConfirmPassword: e.target.value })
               }
               autoComplete="new-password"
             />

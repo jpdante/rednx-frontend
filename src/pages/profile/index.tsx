@@ -2,7 +2,7 @@ import React from "react";
 import type { StoreProps } from "../../undux";
 import Store from "../../undux";
 import { withTranslation } from "react-i18next";
-import HomeTab from "./home-tab";
+import ProfileTab from "./profile-tab";
 import SecurityTab from "./security-tab";
 import SettingsTabs from "./settings-tab";
 
@@ -26,11 +26,11 @@ class Profile extends React.Component<StoreProps, IState> {
             >
               <a
                 className="nav-link active"
-                id="v-pills-home-tab"
+                id="v-pills-profile-tab"
                 data-toggle="pill"
-                href="#v-pills-home"
+                href="#v-pills-profile"
                 role="tab"
-                aria-controls="v-pills-home"
+                aria-controls="v-pills-profile"
                 aria-selected="true"
               >
                 {t("pages.profile.profile")}
@@ -61,7 +61,7 @@ class Profile extends React.Component<StoreProps, IState> {
           </div>
           <div className="col-10 mt-2">
             <div className="tab-content" id="v-pills-tabContent">
-              <HomeTab />
+              <ProfileTab />
               <SecurityTab />
               <SettingsTabs />
             </div>

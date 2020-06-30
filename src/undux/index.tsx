@@ -7,6 +7,7 @@ import {
 import { WithTranslation } from "react-i18next";
 import { hasToken } from "../services/auth";
 import { withEffects } from "./effects";
+import { Channel } from "../model";
 
 type AuthState = {
   isLogged: boolean;
@@ -17,6 +18,7 @@ type ProfileState = {
   username: string | null;
   picture: string | null;
   email: string | null;
+  followedChannels: Channel[];
 };
 
 type SideBarState = {
@@ -29,13 +31,14 @@ let initialAuthState: AuthState = {
 };
 
 let initialProfileState: ProfileState = {
-  username: localStorage.getItem("profile.username"),
-  picture: localStorage.getItem("profile.picture"),
-  email: localStorage.getItem("profile.email"),
+  username: localStorage.getItem("profile.username") || "guest",
+  picture: localStorage.getItem("profile.picture") || "default",
+  email: localStorage.getItem("profile.email") || "guest@email.com",
+  followedChannels: [],
 };
 
 let initialSideBarState: SideBarState = {
-  show: true
+  show: true,
 };
 
 export default createConnectedStoreAs(

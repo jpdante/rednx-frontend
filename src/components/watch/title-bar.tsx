@@ -4,7 +4,12 @@ import { Video } from "../../model";
 import styles from "./watch.module.scss";
 
 function getClassification(classification: number | undefined | null) {
-  if (classification === 0 || classification === undefined || classification === null) return "L";
+  if (
+    classification === 0 ||
+    classification === undefined ||
+    classification === null
+  )
+    return "L";
   return classification;
 }
 
@@ -26,11 +31,13 @@ function getClassificationColor(classification: number | undefined | null) {
   }
 }
 
-function TitleBar(props: {video: Video | null}) {
+function TitleBar(props: { video: Video | null }) {
   return (
     <div className={`${styles.videoTitleContainer}`}>
       <div className={`${styles.videoIcon}`}>
-        <img src={`/assets/${props.video?.icon}`} alt="game" />
+        {props.video?.icon && (
+          <img src={`/assets/${props.video.icon}`} alt="game" />
+        )}
       </div>
       <div
         className={`${styles.videoClassification}`}

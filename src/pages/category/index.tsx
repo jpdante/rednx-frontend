@@ -2,11 +2,11 @@ import React from "react";
 
 import Loading from "../../components/loading";
 import { withTranslation, WithTranslation } from "react-i18next";
-import api from "../../api";
 import VideoThumb from "../../components/video-thumb";
 import { VideoThumbnail } from "../../model";
 
 import styles from "./category.module.scss";
+import net from "../../services/net";
 
 interface IProps extends WithTranslation {
   category?: string;
@@ -61,14 +61,14 @@ class Home extends React.Component<IProps, IState> {
       categoryName: categoryName,
       loading: true,
     });
-    const response = await api.getNewVideos();
+    const response = await net.get("/feed/new");
     this.setState({
       loading: false,
       videos: response.data,
     });
   }
 
-  async componentWillReceiveProps(nextProps: IProps) {
+  async UNSAFE_componentWillReceiveProps(nextProps: IProps) {
     await this.setCategory(nextProps.category || "");
   }
 

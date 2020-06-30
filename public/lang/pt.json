@@ -47,6 +47,7 @@
     "noImageSelected": "Nenhuma imagem foi selecionada!",
     "operationDenied": "Operação negada!",
     "passwordEmpty": "A senha não pode ficar em branco.",
+    "passwordLenght": "O comprimento da senha deve ser de no minimo 8 caracteres!",
     "passwordsDontMatch": "As senhas não são iguais.",
     "requestBodyTooBig": "O tamanho é muito grande!",
     "unknownApi": "Erro, API desconhecida.",
@@ -132,6 +133,9 @@
     "recommended": {
       "title": "Recomendados"
     },
+    "search": {
+      "resultsFor": "Resultados para \"{{content}}\""
+    },
     "watch": {
       "commentPlaceHolder": "Digite aqui um comentário legal.",
       "followers": "{{countText}} seguidores",
@@ -165,6 +169,9 @@
     "sports": "Esportes",
     "unknown": "Desconhecida",
     "vlogs": "Vlogs"
+  },
+  "successes": {
+    "passwordChanged": "Senha alterada com sucesso!"
   },
   "time": {
     "ago": "há {{time}}",

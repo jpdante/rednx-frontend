@@ -1,17 +1,15 @@
 import React from "react";
 
 import Loading from "../../components/loading";
-import FeedNewVideos from "../../components/feed";
 import { withTranslation, WithTranslation } from "react-i18next";
 import { VideoThumbnail } from "../../model";
-import net from "../../services/net";
 
 interface IState {
   loading: boolean;
   videos: VideoThumbnail[]; 
 }
 
-class Home extends React.Component<WithTranslation, IState> {
+class History extends React.Component<WithTranslation, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -21,26 +19,26 @@ class Home extends React.Component<WithTranslation, IState> {
   }
 
   async componentDidMount() {
-    const response = await net.get("/feed/new");
+    //const response = await net.get("/feed/new");
     this.setState({
       loading: false,
-      videos: response.data,
+      videos: [],
     });
   }
 
   render() {
-    const { t } = this.props;
+    //const { t } = this.props;
     if (this.state.loading) {
       return <Loading isPageContent={true} />;
     }
     return (
-      <div className="feed-list">
-        <h5>{t("pages.home.videosai")}</h5>
-        <hr />
-        <FeedNewVideos videos={this.state.videos} />
+      <div className="feed-list text-center">
+        <br />
+        <h1>Under Maintenance</h1>
+        {/*<FeedNewVideos videos={this.state.videos} />*/}
       </div>
     );
   }
 }
 
-export default withTranslation()(Home);
+export default withTranslation()(History);

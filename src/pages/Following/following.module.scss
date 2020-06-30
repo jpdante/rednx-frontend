@@ -1,0 +1,17 @@
+.channel {
+  text-align: center;
+  color: #d6d6d6;
+
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .picture {
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 5px;
+  }
+}

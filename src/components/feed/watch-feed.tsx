@@ -22,7 +22,7 @@ class WatchFeed extends React.Component<IProps, IState> {
   }
 
   async componentDidMount() {
-    const response = await net.get("/feed/newvideos");
+    const response = await net.get("/feed/new");
     this.setState({
       loading: false,
       videos: response.data,

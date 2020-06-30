@@ -47,6 +47,7 @@
     "noImageSelected": "No image was selected!",
     "operationDenied": "Operation denied!",
     "passwordEmpty": "The password cannot be empty.",
+    "passwordLenght": "The password length must be at least 8 characters!",
     "passwordsDontMatch": "Passwords are not the same.",
     "requestBodyTooBig": "The size is too big!",
     "unknownApi": "Error, unknown API.",
@@ -132,6 +133,9 @@
     "recommended": {
       "title": "Recommended"
     },
+    "search": {
+      "resultsFor": "Results for \"{{content}}\""
+    },
     "watch": {
       "commentPlaceHolder": "Type a nice comment here.",
       "followers": "{{countText}} followers",
@@ -165,6 +169,9 @@
     "sports": "Sports",
     "unknown": "Unknown",
     "vlogs": "Vlogs"
+  },
+  "successes": {
+    "passwordChanged": "Password changed successfully!"
   },
   "time": {
     "ago": "{{time}} ago",

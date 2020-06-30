@@ -44,7 +44,7 @@ class Channel extends React.Component<IProps, IState> {
     };
   }
 
-  async componentWillReceiveProps(nextProps: IProps) {
+  async UNSAFE_componentWillReceiveProps(nextProps: IProps) {
     await this.loadChannel(nextProps.link || "");
   }
 

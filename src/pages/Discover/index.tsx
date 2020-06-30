@@ -11,7 +11,7 @@ interface IState {
   videos: VideoThumbnail[]; 
 }
 
-class Home extends React.Component<WithTranslation, IState> {
+class Discover extends React.Component<WithTranslation, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -43,4 +43,4 @@ class Home extends React.Component<WithTranslation, IState> {
   }
 }
 
-export default withTranslation()(Home);
+export default withTranslation()(Discover);

@@ -5,30 +5,6 @@ import { navigate } from "@reach/router";
 
 const api = {
   // ~~~~ AUTH ~~~~
-  login: async (email: string, password: string, captcha: string) => {
-    return await net.post("/auth/login", {
-      email,
-      password,
-      captcha,
-    });
-  },
-  register: async (
-    username: string,
-    email: string,
-    password: string,
-    birthdate: number,
-    captcha: string,
-    lang: string
-  ) => {
-    return await net.post("/auth/register", {
-      username,
-      email,
-      password,
-      birthdate,
-      captcha,
-      lang,
-    });
-  },
   checkSession: async (response: any) => {
     let stores = Store.useStores();
     if (!hasToken()) return;
@@ -61,18 +37,6 @@ const api = {
   },
   canCreateNewChannel: async () => {
     const response = await net.get("/channel/cancreate");
-    await api.checkSession(response);
-    return response;
-  },
-  // ~~~~ FEED ~~~~
-  getNewVideos: async () => {
-    return await net.get("/feed/newvideos");
-  },
-  // ~~~~ PROFILE ~~~~
-  uploadProfilePicture: async (picture: string) => {
-    const response = await net.post("/profile/putpicture", {
-      picture,
-    });
     await api.checkSession(response);
     return response;
   },

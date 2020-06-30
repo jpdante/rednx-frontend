@@ -11,7 +11,7 @@ interface IState {
   videos: VideoThumbnail[]; 
 }
 
-class Home extends React.Component<WithTranslation, IState> {
+class Live extends React.Component<WithTranslation, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -21,7 +21,7 @@ class Home extends React.Component<WithTranslation, IState> {
   }
 
   async componentDidMount() {
-    const response = await net.get("/feed/new");
+    const response = await net.get("/feed/live");
     this.setState({
       loading: false,
       videos: response.data,
@@ -43,4 +43,4 @@ class Home extends React.Component<WithTranslation, IState> {
   }
 }
 
-export default withTranslation()(Home);
+export default withTranslation()(Live);

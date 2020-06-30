@@ -104,9 +104,9 @@ class Description extends React.Component<IProps, IState> {
           {auth.get("isLogged") ? (
             <div className={`${styles.media} media`}>
               <img
-                src={`http://s3.tryhosting.com.br/pp/${profile.get(
+                src={`https://storage.bhs.cloud.ovh.net/v1/AUTH_d86662c318654f248055a1f464721aa8/public/pp/${profile.get(
                   "picture"
-                )}.webp`}
+                ) || "default"}.webp`}
                 alt="profile pic"
               />
               <div className={`${styles.authComment} media-body`}>
@@ -149,7 +149,7 @@ class Description extends React.Component<IProps, IState> {
           {this.state.comments.map((comment) => (
             <li className={`${styles.media} media`} key={comment.id}>
               <img
-                src={`http://public.tryhosting.com.br/pp/${comment.accountPicture}.webp`}
+                src={`https://storage.bhs.cloud.ovh.net/v1/AUTH_d86662c318654f248055a1f464721aa8/public/pp/${comment.accountPicture || "default"}.webp`}
                 alt="..."
               />
               <div

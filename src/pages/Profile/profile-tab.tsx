@@ -13,7 +13,7 @@ interface IState {
   loading: boolean;
 }
 
-class HomeTab extends React.Component<StoreProps, IState> {
+class ProfileTab extends React.Component<StoreProps, IState> {
   constructor(props: StoreProps) {
     super(props);
     this.state = {
@@ -33,9 +33,9 @@ class HomeTab extends React.Component<StoreProps, IState> {
     return (
       <div
         className="tab-pane fade show active"
-        id="v-pills-home"
+        id="v-pills-profile"
         role="tabpanel"
-        aria-labelledby="v-pills-home-tab"
+        aria-labelledby="v-pills-profile-tab"
       >
         <h4>{t("pages.profile.publicProfile")}</h4>
         <hr />
@@ -101,7 +101,7 @@ class HomeTab extends React.Component<StoreProps, IState> {
                 </div>
               </div>
               <img
-                src={`http://s3.tryhosting.com.br/pp/${profile.get(
+                src={`https://storage.bhs.cloud.ovh.net/v1/AUTH_d86662c318654f248055a1f464721aa8/public/pp/${profile.get(
                   "picture"
                 )}.webp`}
                 className="rounded mx-auto d-inline-block align-top"
@@ -115,4 +115,4 @@ class HomeTab extends React.Component<StoreProps, IState> {
   }
 }
 
-export default Store.withStores(withTranslation()(HomeTab));
+export default Store.withStores(withTranslation()(ProfileTab));

@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { withTranslation } from "react-i18next";
-import api from "../../api";
 import { Link } from "@reach/router";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import DatePicker from "react-datepicker";
@@ -11,7 +10,8 @@ import type { StoreProps } from "../../undux";
 import Store from "../../undux";
 
 import styles from "./auth.module.scss";
-import { getLanguage } from "./../../services/language";
+import { getLanguage } from "../../services/language";
+import net from "../../services/net";
 
 interface IState {
   email: string;
@@ -122,14 +122,15 @@ class Register extends React.Component<StoreProps, IState> {
     }
     try {
       this.setState({ loading: true });
-      const response = await api.register(
+      const response = await net.post("/auth/register", {
         username,
         email,
         password,
-        birthDate.getTime() / 1000,
+        confirmPassword,
+        birthDate: birthDate.getTime() / 1000,
         captcha,
-        getLanguage()
-      );
+        lang: getLanguage()
+      });
       this.setState({ loading: false });
       if (response.data.success) {
         this.setState({
