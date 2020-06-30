@@ -52,9 +52,13 @@ function UserBar() {
           className={`${styles.animate} ${styles.slideIn} dropdown-menu dropdown-menu-right`}
           aria-labelledby="navbarDropdownMenuLink"
         >
+          <Link className="dropdown-item" to="/dashboard">
+            {t("components.navbar.dashboard")}
+          </Link>
           <Link className="dropdown-item" to="/profile">
             {t("components.navbar.profile")}
           </Link>
+          <hr />
           <button
             className="dropdown-item"
             data-toggle="modal"

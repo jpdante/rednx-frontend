@@ -8,12 +8,12 @@ import Store from "../../undux";
 import styles from "./sidebar.module.scss";
 
 function SideBar() {
-  let stores = Store.useStores();
+  const { auth, sidebar } = Store.useStores();
   return (
-    <div className={`${styles.sidebar} ${!stores.sidebar.get("show") && styles.hide}`}>
+    <div className={`${styles.sidebar} ${!sidebar.get("show") && styles.hide}`}>
       <MainNav />
-      <hr />
-      <FollowingNav />
+      {auth.get("isLogged") && <hr />}
+      {auth.get("isLogged") && <FollowingNav />}
       <hr />
       <CategoryNav />
     </div>

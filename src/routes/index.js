@@ -18,6 +18,7 @@ import NotFound from "../pages/Not-found";
 import Category from "../pages/Category";
 import Watch from "../pages/Watch";
 import Channel from "../pages/Channel";
+import Dashboard from "../pages/Dashboard";
 
 const PrivateRoute = (props) => {
   const stores = Store.useStores();
@@ -62,6 +63,7 @@ class Routes extends React.Component {
         <PrivateRoute path="/profile" component={Profile} />
         <PrivateRoute path="/following" component={Following} />
         <PrivateRoute path="/history" component={History} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
         <NotFound path="*" />
       </Router>
     );

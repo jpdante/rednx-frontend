@@ -1,6 +1,7 @@
 {
   "components": {
     "navbar": {
+      "dashboard": "Dashboard",
       "discover": "Discover",
       "following": "Following",
       "history": "History",

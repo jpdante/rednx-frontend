@@ -1,6 +1,7 @@
 {
   "components": {
     "navbar": {
+      "dashboard": "Painel de Controle",
       "discover": "Descobrir",
       "following": "Seguindo",
       "history": "Histórico",

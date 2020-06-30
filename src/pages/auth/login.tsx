@@ -7,6 +7,7 @@ import Store from "../../undux";
 
 import styles from "./auth.module.scss";
 import net from "../../services/net";
+import { HCaptchaKey } from './../../constants';
 
 interface IState {
   email: string;
@@ -151,7 +152,7 @@ class Login extends React.Component<StoreProps, IState> {
             <div className="text-center">
               <HCaptcha
                 ref={this.hCaptchaRef}
-                sitekey="0bf5a996-480a-4bab-81b5-20d85f1ade44"
+                sitekey={HCaptchaKey}
                 theme="dark"
                 size="invisible"
                 onVerify={(token) => this.handleVerificationSuccess(token)}
