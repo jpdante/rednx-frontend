@@ -80,6 +80,7 @@
     "forgotPassword": "Forgot your password ?",
     "password": "Password",
     "passwordMinLength": "Password must be at least 8 characters",
+    "recoverRequestSent": "A request to reset the password was sent to \"{{email}}\", the code will be valid for 24 hours.",
     "removePicture": "Remove Picture",
     "save": "Save",
     "saved": "Saved!",
@@ -100,6 +101,10 @@
     "thousand_plural": "{{count}} thousand"
   },
   "pages": {
+    "auth": {
+      "forgotPassword": "Password Recovery",
+      "recover": "Recover"
+    },
     "discover": {
       "title": "Discover"
     },

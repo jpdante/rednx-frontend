@@ -19,6 +19,7 @@ import Category from "../pages/Category";
 import Watch from "../pages/Watch";
 import Channel from "../pages/Channel";
 import Dashboard from "../pages/Dashboard";
+import ForgotPassword from "../pages/Auth/ForgotPassword";
 
 const PrivateRoute = (props) => {
   const stores = Store.useStores();
@@ -57,6 +58,7 @@ class Routes extends React.Component {
         <Recommended path="/recommended" />
         <Login path="/login" />
         <Register path="/register" />
+        <ForgotPassword path="/forgot-password" />
         <Category path="/category/:category" />
         <Watch path="/watch/:link" />
         <Channel path="/channel/:link" />

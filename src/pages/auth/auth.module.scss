@@ -58,6 +58,19 @@
       }
     }
 
+    .semiActive {
+      a {
+        color: #c9d2db;
+        cursor: default;
+      }
+
+      hr {
+        border: 1px solid #2c2c2c;
+        border-radius: 5px;
+        margin-top: 3px;
+      }
+    }
+
     hr {
       border-bottom: 1px solid #2c2c2c;
       border-radius: 5px;

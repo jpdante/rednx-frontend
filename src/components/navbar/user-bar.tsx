@@ -19,7 +19,7 @@ function UserBar() {
     <ul className="nav navbar-nav ml-auto w-100 justify-content-end">
       <li className="nav-item mr-3">
         <a
-          className="nav-link active"
+          className="nav-link"
           href="#"
           data-toggle="dropdown"
           aria-haspopup="true"

@@ -80,6 +80,7 @@
     "forgotPassword": "Esqueceu a sua senha ?",
     "password": "Senha",
     "passwordMinLength": "A senha precisa ter no mínimo 8 caracteres",
+    "recoverRequestSent": "Uma requisição para resetar a senha foi enviada para \"{{email}}\", o código sera valido por 24 horas.",
     "removePicture": "Remover Foto",
     "save": "Salvar",
     "saved": "Salvo!",
@@ -100,6 +101,10 @@
     "thousand_plural": "{{count}} mil"
   },
   "pages": {
+    "auth": {
+      "forgotPassword": "Recuperaçao da Senha",
+      "recover": "Recuperar"
+    },
     "discover": {
       "title": "Descobrir"
     },

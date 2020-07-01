@@ -19,7 +19,7 @@ class SearchBar extends React.Component<PropType, IState> {
     };
   }
 
-  toggleSideBar() {
+  toggleSideBar = () => {
     const { sidebar } = this.props;
     sidebar.set("show")(!sidebar.get("show"));
   }

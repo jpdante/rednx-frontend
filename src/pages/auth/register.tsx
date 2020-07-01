@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { withTranslation } from "react-i18next";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -158,7 +158,10 @@ class Register extends React.Component<StoreProps, IState> {
   };
 
   render() {
-    const { t } = this.props;
+    const { t, auth } = this.props;
+    if (auth.get("isLogged")) {
+      navigate("/");
+    }
     return (
       <div className={`${styles.fixBorder} shadow mt-5`}>
         <div className={`${styles.authContainer}`}>
@@ -292,7 +295,6 @@ class Register extends React.Component<StoreProps, IState> {
               </p>
             </div>
           </form>
-          <hr />
         </div>
       </div>
     );

@@ -7,27 +7,29 @@ import Store from "../../undux";
 
 import styles from "./auth.module.scss";
 import net from "../../services/net";
-import { HCaptchaKey } from './../../constants';
+import { HCaptchaKey } from '../../constants';
 
 interface IState {
   email: string;
-  password: string;
   error: string;
+  success: string;
   errorData: any;
+  successData: any;
   captcha: string;
   loading: boolean;
 }
 
-class Login extends React.Component<StoreProps, IState> {
+class ForgotPassword extends React.Component<StoreProps, IState> {
   private hCaptchaRef: any = React.createRef();
 
   constructor(props: any) {
     super(props);
     this.state = {
       email: "",
-      password: "",
       error: "",
+      success: "",
       errorData: null,
+      successData: null,
       captcha: "",
       loading: false,
     };
@@ -44,13 +46,9 @@ class Login extends React.Component<StoreProps, IState> {
       error: "",
       loading: false,
     });
-    const { email, password, captcha } = this.state;
+    const { email, captcha } = this.state;
     if (!email) {
       this.setState({ error: "errors.emailEmpty" });
-      return;
-    }
-    if (!password) {
-      this.setState({ error: "errors.passwordEmpty" });
       return;
     }
     if (!captcha) {
@@ -59,19 +57,18 @@ class Login extends React.Component<StoreProps, IState> {
     }
     try {
       this.setState({ loading: true });
-      const response = await net.post("/auth/login", {
+      const response = await net.post("/auth/forgotpassword", {
         email,
-        password,
         captcha,
       });
       this.setState({ loading: false });
       if (response.data.success) {
-        const { auth, profile } = this.props;
-        profile.set("username")(response.data.account.username);
-        profile.set("picture")(response.data.account.profilePicture || "default");
-        profile.set("email")(email);
-        auth.set("token")(response.data.token);
-        navigate("/");
+        this.setState({
+          loading: false,
+          error: "",
+          success: "modals.recoverRequestSent",
+          successData: {email}
+        });
       } else {
         this.setState({
           error: response.data.message,
@@ -88,10 +85,7 @@ class Login extends React.Component<StoreProps, IState> {
   };
 
   render() {
-    const { t, auth } = this.props;
-    if (auth.get("isLogged")) {
-      navigate("/");
-    }
+    const { t } = this.props;
     return (
       <div className={`${styles.fixBorder} shadow mt-5`}>
         <div className={`${styles.authContainer}`}>
@@ -100,26 +94,23 @@ class Login extends React.Component<StoreProps, IState> {
           </h4>
           <div className={`${styles.bar}`}>
             <div>
-              <div className={`${styles.button} ${styles.active} float-left`}>
-                <Link className={`text-center`} to="/login">
-                  {t("components.navbar.login")}
+              <div className={`${styles.button} ${styles.semiActive}`}>
+                <Link className={`text-center`} to="/forgot-password">
+                  {t("pages.auth.forgotPassword")}
                 </Link>
                 <hr />
               </div>
-              <div className={`${styles.button} float-left`}>
-                <Link className={`text-center`} to="/register">
-                  {t("components.navbar.register")}
-                </Link>
-                <hr />
-              </div>
-              <div className={`${styles.button} float-none`}>&nbsp;</div>
             </div>
-            <hr />
           </div>
           <form className={styles.form} onSubmit={this.handleSubmit}>
             {this.state.error && (
               <div className="alert alert-danger" role="alert">
                 {t(this.state.error, this.state.errorData)}
+              </div>
+            )}
+            {this.state.success && (
+              <div className="alert alert-success" role="alert">
+                {t(this.state.success)}
               </div>
             )}
             <div className="form-group">
@@ -132,25 +123,6 @@ class Login extends React.Component<StoreProps, IState> {
                 required
                 onChange={(e) => this.setState({ email: e.target.value })}
               />
-            </div>
-            <div className="form-group">
-              <label>{t("modals.password")}</label>
-              <input
-                type="password"
-                className="form-control"
-                placeholder={t("modals.password")}
-                required
-                minLength={8}
-                onChange={(e) => this.setState({ password: e.target.value })}
-              />
-              <small className="form-text text-muted">
-                {t("modals.passwordMinLength")}
-              </small>
-            </div>
-            <div className="form-group">
-              <Link className="form-check-label" to="/forgot-password">
-                {t("modals.forgotPassword")}
-              </Link>
             </div>
             <div className="text-center">
               <HCaptcha
@@ -167,7 +139,7 @@ class Login extends React.Component<StoreProps, IState> {
                   <span className="sr-only">Loading...</span>
                 </div>
               ) : (
-                t("components.navbar.login")
+                t("pages.auth.recover")
               )}
             </button>
             <div className="text-center my-3">
@@ -184,11 +156,10 @@ class Login extends React.Component<StoreProps, IState> {
               </p>
             </div>
           </form>
-          <hr />
         </div>
       </div>
     );
   }
 }
 
-export default Store.withStores(withTranslation()(Login));
+export default Store.withStores(withTranslation()(ForgotPassword));
