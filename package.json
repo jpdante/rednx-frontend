@@ -27,7 +27,7 @@
     "i18next": "^19.4.5",
     "i18next-http-backend": "^1.0.15",
     "jquery": "^3.5.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "plyr": "^3.6.2",
     "popper.js": "^1.14.3",
     "react": "^16.13.1",
